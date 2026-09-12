@@ -820,6 +820,111 @@ section.examen details.q summary::after {
   flex-wrap: wrap;
 }
 
+/* ---------- Ejercicios de huecos (estilo Sololearn) ---------- */
+
+.codigo-huecos {
+  background: var(--ink);
+  color: #F7F2E7;
+  border: var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  padding: 1.3rem 1.4rem;
+  font-family: "Courier New", Courier, monospace;
+  font-size: .95rem;
+  font-weight: 700;
+  line-height: 2.1;
+  overflow-x: auto;
+  white-space: pre;
+}
+
+.hueco {
+  display: inline-block;
+  min-width: 84px;
+  min-height: 1.6em;
+  text-align: center;
+  background: var(--paper);
+  color: var(--ink);
+  border: 2px dashed var(--ink);
+  border-radius: 8px;
+  font: inherit;
+  padding: .05rem .6rem;
+  margin: 0 .25rem;
+  cursor: pointer;
+  vertical-align: baseline;
+}
+
+.hueco.vacio::before { content: "?"; opacity: .45; }
+
+.hueco.seleccionado {
+  outline: 3px solid var(--blue);
+  outline-offset: 1px;
+}
+
+.hueco.ok {
+  background: var(--green);
+  border-style: solid;
+  cursor: default;
+}
+
+.hueco.ko { background: var(--red); border-style: solid; }
+
+.opciones {
+  display: flex;
+  gap: .7rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 1.4rem 0;
+  min-height: 44px;
+}
+
+.opcion {
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 700;
+  font-size: .95rem;
+  background: var(--white);
+  border: var(--border);
+  border-radius: 10px;
+  box-shadow: var(--shadow-sm);
+  padding: .5rem 1rem;
+  cursor: pointer;
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+
+.opcion:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 var(--ink);
+  background: var(--yellow);
+}
+
+.retroalimentacion {
+  display: none;
+  border: var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  padding: .9rem 1.1rem;
+  margin: 1rem 0;
+  font-weight: 700;
+}
+
+.retroalimentacion.bien { display: block; background: var(--green); }
+.retroalimentacion.mal { display: block; background: var(--red); }
+
+.controles-huecos {
+  display: flex;
+  gap: .8rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 1.2rem 0 .4rem;
+}
+
+.btn[disabled] {
+  opacity: .45;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: var(--shadow-sm);
+}
+
 /* ---------- Responsive ---------- */
 
 @media (max-width: 600px) {

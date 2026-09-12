@@ -269,3 +269,283 @@ if (document.querySelector("[data-memoria]")) {
 
   empezar();
 }
+
+/* ---------- Ejercicios de huecos (estilo Sololearn) ---------- */
+const EJERCICIOS_HUECOS = [
+  {
+    tema: "Tema 02",
+    intro: "Toda página empieza igual: idioma del documento y codificación de caracteres. Completa las dos etiquetas.",
+    codigo: '<html ~~~="es">\n  <head>\n    <meta ~~~="utf-8">',
+    soluciones: ["lang", "charset"],
+    opciones: ["lang", "charset", "src", "alt", "title"],
+    explicacion: "lang=\"es\" declara el idioma de la página (clave para lectores de pantalla y SEO) y charset=\"utf-8\" hace que los acentos y emojis se vean bien.",
+  },
+  {
+    tema: "Tema 03",
+    intro: "Esta imagen tiene dos atributos imprescindibles: la ruta y la descripción.",
+    codigo: '<img ~~~="images/gato.jpg"\n     ~~~="Un gato gris dormido en el sofá">',
+    soluciones: ["src", "alt"],
+    opciones: ["src", "alt", "href", "title", "lang"],
+    explicacion: "src (source) es la ruta de la imagen; alt es su descripción para quien no puede verla. El atributo href es de los enlaces, no de las imágenes.",
+  },
+  {
+    tema: "Tema 02",
+    intro: "Lista de la compra: el orden NO importa. Usa la lista sin orden… y no olvides cerrar.",
+    codigo: "<~~~>\n  <~~~>Leche</~~~>\n  <li>Pan</li>\n</~~~>",
+    soluciones: ["ul", "li", "/li", "/ul"],
+    opciones: ["ul", "ol", "li", "/li", "/ul", "/ol"],
+    explicacion: "ul = unordered list (sin orden). Cada elemento va en <li> y todo se cierra: </li> y </ul>.",
+  },
+  {
+    tema: "Tema 02",
+    intro: "Instrucciones paso a paso: aquí el orden SÍ importa.",
+    codigo: "<~~~>\n  <~~~>Abre el editor</~~~>\n  <li>Guarda el archivo</li>\n</~~~>",
+    soluciones: ["ol", "li", "/li", "/ol"],
+    opciones: ["ol", "ul", "li", "/li", "/ol", "/ul"],
+    explicacion: "ol = ordered list: el navegador la numera automáticamente (1, 2, 3…). La estructura por dentro es igual que la <ul>.",
+  },
+  {
+    tema: "Tema 02",
+    intro: "Un párrafo con énfasis (cursiva) e importancia (negrita). Coloca las cuatro etiquetas.",
+    codigo: "<p>El examen es <~~~>mañana</~~~> por la mañana.</p>\n<p><~~~>¡No llegues tarde!</~~~></p>",
+    soluciones: ["<em>", "</em>", "<strong>", "</strong>"],
+    opciones: ["<em>", "</em>", "<strong>", "</strong>"],
+    explicacion: "<em> da énfasis (cambia el matiz de la frase) y <strong> importancia fuerte. Y nunca olvides la etiqueta de cierre.",
+  },
+  {
+    tema: "Tema 02",
+    intro: "Conecta el CSS y el JavaScript externos desde el <head>.",
+    codigo: '<link rel="~~~" href="styles.css">\n<~~~ src="app.js"></~~~>',
+    soluciones: ["stylesheet", "script", "/script"],
+    opciones: ["stylesheet", "script", "/script", "style", "icon"],
+    explicacion: "La hoja de estilos se enlaza con rel=\"stylesheet\". El script lleva src y SU etiqueta de cierre: <script> no es un elemento vacío.",
+  },
+  {
+    tema: "Tema 03",
+    intro: "Una imagen con su pie de foto, bien vinculados entre sí.",
+    codigo: '<~~~>\n  <img src="trex.jpg" alt="Esqueleto de T-Rex">\n  <~~~>Museo de Manchester</~~~>\n</~~~>',
+    soluciones: ["figure", "figcaption", "/figcaption", "/figure"],
+    opciones: ["figure", "figcaption", "/figcaption", "/figure"],
+    explicacion: "<figure> agrupa la figura y <figcaption> es su pie. Así el lector de pantalla entiende que ese pie describe a ESA imagen.",
+  },
+  {
+    tema: "Tema 05",
+    intro: "Aplica las tres propiedades del \"regalo\" a esta caja.",
+    codigo: ".caja {\n  ~~~: 3px solid black;\n  ~~~-top: 20px;\n  ~~~: 12px;\n}",
+    soluciones: ["border", "margin", "padding"],
+    opciones: ["border", "margin", "padding", "width", "color"],
+    explicacion: "border dibuja la caja de cartón, margin-top separa 20px hacia arriba (por fuera) y padding da 12px de aire interior.",
+  },
+  {
+    tema: "Tema 05",
+    intro: "Este cartel se queda pegado a la pantalla aunque hagas scroll. ¿Qué position es?",
+    codigo: ".cartel {\n  position: ~~~;\n  top: 0;\n}",
+    soluciones: ["fixed"],
+    opciones: ["fixed", "absolute", "sticky", "relative", "static"],
+    explicacion: "fixed se ancla al viewport: se queda fijo al hacer scroll. absolute se ancla a su ancestro posicionado y sticky solo se pega dentro de su contenedor.",
+  },
+  {
+    tema: "Tema 05",
+    intro: "La foto flota a la izquierda y el pie debe quedarse debajo del todo.",
+    codigo: ".foto {\n  float: ~~~;\n}\n.pie {\n  clear: ~~~;\n}",
+    soluciones: ["left", "both"],
+    opciones: ["left", "right", "both", "none"],
+    explicacion: "float: left pega la foto a la izquierda y el texto la rodea; clear: both impide que el pie suba para situarse junto a la foto.",
+  },
+  {
+    tema: "Actividad 2",
+    intro: "Explica una sigla la primera vez que aparece en el texto.",
+    codigo: '<abbr ~~~="Cascading Style Sheets">CSS</abbr>',
+    soluciones: ["title"],
+    opciones: ["title", "alt", "lang", "href"],
+    explicacion: "<abbr> marca la abreviatura y su atributo title guarda el significado completo (se ve al pasar el ratón por encima).",
+  },
+  {
+    tema: "Actividad 2",
+    intro: "Una fecha bonita para las personas y clara para las máquinas.",
+    codigo: '<time ~~~="2026-09-12">12 de septiembre de 2026</time>',
+    soluciones: ["datetime"],
+    opciones: ["datetime", "date", "title", "lang"],
+    explicacion: "El texto se lee bonito para humanos; datetime lleva la fecha en formato ISO (AAAA-MM-DD) para buscadores y lectores de pantalla.",
+  },
+];
+
+if (document.querySelector("[data-huecos]")) {
+  const escapar = (t) => t.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  const barajar = (a) => a.map((x) => [Math.random(), x]).sort((p, q) => p[0] - q[0]).map((p) => p[1]);
+
+  let indice = 0;
+  let rellenos = [];
+  let bloqueados = [];
+  let fallos = [];
+  let seleccionado = null;
+  let pool = [];
+
+  const elTema = document.querySelector("[data-h-tema]");
+  const elIntro = document.querySelector("[data-h-intro]");
+  const elCodigo = document.querySelector("[data-h-codigo]");
+  const elOpciones = document.querySelector("[data-h-opciones]");
+  const elFeedback = document.querySelector("[data-h-feedback]");
+  const btnVerificar = document.querySelector("[data-h-verificar]");
+  const btnSiguiente = document.querySelector("[data-h-siguiente]");
+  const elContador = document.querySelector("[data-h-contador]");
+
+  const ejercicio = () => EJERCICIOS_HUECOS[indice];
+
+  const pintarCodigo = () => {
+    let n = 0;
+    elCodigo.innerHTML = ejercicio().codigo.split("\n").map((linea) => {
+      const trozos = linea.split("~~~");
+      let out = "";
+      trozos.forEach((trozo, i) => {
+        out += escapar(trozo);
+        if (i < trozos.length - 1) {
+          const num = n++;
+          const clases = ["hueco"];
+          if (!rellenos[num]) clases.push("vacio");
+          if (seleccionado === num) clases.push("seleccionado");
+          if (bloqueados[num]) clases.push("ok");
+          if (fallos.includes(num)) clases.push("ko");
+          out += `<button type="button" class="${clases.join(" ")}" data-hueco="${num}">${rellenos[num] ? escapar(rellenos[num]) : ""}</button>`;
+        }
+      });
+      return out;
+    }).join("\n");
+    elCodigo.querySelectorAll("[data-hueco]").forEach((h) =>
+      h.addEventListener("click", () => tocarHueco(Number(h.dataset.hueco)))
+    );
+  };
+
+  const pintarOpciones = () => {
+    elOpciones.innerHTML = "";
+    pool.forEach((token) => {
+      const chip = document.createElement("button");
+      chip.type = "button";
+      chip.className = "opcion";
+      chip.textContent = token;
+      chip.addEventListener("click", () => colocar(token));
+      elOpciones.appendChild(chip);
+    });
+  };
+
+  const pintarVerificar = () => {
+    btnVerificar.disabled = rellenos.some((v) => v === null);
+  };
+
+  const mensaje = (texto, tipo) => {
+    elFeedback.className = `retroalimentacion ${tipo}`;
+    elFeedback.textContent = texto;
+  };
+
+  const limpiarFeedback = () => {
+    elFeedback.className = "retroalimentacion";
+    elFeedback.textContent = "";
+  };
+
+  function tocarHueco(num) {
+    if (bloqueados[num]) return;
+    if (rellenos[num]) {
+      pool.push(rellenos[num]);
+      rellenos[num] = null;
+    }
+    seleccionado = seleccionado === num ? null : num;
+    limpiarFeedback();
+    pintarCodigo();
+    pintarOpciones();
+    pintarVerificar();
+  }
+
+  function colocar(token) {
+    if (seleccionado === null) {
+      mensaje("👆 Primero toca un hueco del código para seleccionarlo.", "mal");
+      return;
+    }
+    if (rellenos[seleccionado]) pool.push(rellenos[seleccionado]);
+    rellenos[seleccionado] = token;
+    pool.splice(pool.indexOf(token), 1);
+    const siguienteVacio = rellenos.findIndex((v, i) => v === null && !bloqueados[i]);
+    seleccionado = siguienteVacio === -1 ? null : siguienteVacio;
+    limpiarFeedback();
+    pintarCodigo();
+    pintarOpciones();
+    pintarVerificar();
+  }
+
+  function verificar() {
+    const ej = ejercicio();
+    fallos = [];
+    ej.soluciones.forEach((solucion, i) => {
+      if (rellenos[i] === solucion) {
+        bloqueados[i] = true;
+      } else {
+        fallos.push(i);
+      }
+    });
+    pintarCodigo();
+
+    if (fallos.length === 0) {
+      mensaje(`✅ ¡Correcto! ${ej.explicacion}`, "bien");
+      btnSiguiente.hidden = false;
+      seleccionado = null;
+      celebrar();
+    } else {
+      mensaje("❌ Los huecos en rojo no van ahí. Míralos bien e inténtalo otra vez.", "mal");
+      setTimeout(() => {
+        fallos.forEach((i) => {
+          if (!bloqueados[i] && rellenos[i]) {
+            pool.push(rellenos[i]);
+            rellenos[i] = null;
+          }
+        });
+        fallos = [];
+        pintarCodigo();
+        pintarOpciones();
+        pintarVerificar();
+      }, 1000);
+    }
+  }
+
+  function cargar() {
+    if (indice >= EJERCICIOS_HUECOS.length) {
+      elContador.textContent = `🏁 ¡${EJERCICIOS_HUECOS.length} de ${EJERCICIOS_HUECOS.length}!`;
+      elTema.textContent = "Fin";
+      elIntro.textContent = "Has completado todos los retos. Ahora los huecos los rellenas tú en un archivo vacío.";
+      elCodigo.textContent = "<!DOCTYPE html>\n<html ~~~>\n  <!-- te esperamos -->";
+      elOpciones.innerHTML = "";
+      limpiarFeedback();
+      mensaje("⭐ Nivelazo. Vuelve a las fichas o repasa con las flashcards; aquí ya no hay nada que hacer.", "bien");
+      btnVerificar.hidden = true;
+      btnSiguiente.hidden = false;
+      btnSiguiente.textContent = "↻ Empezar de nuevo";
+      return;
+    }
+
+    const ej = ejercicio();
+    rellenos = ej.soluciones.map(() => null);
+    bloqueados = ej.soluciones.map(() => false);
+    fallos = [];
+    seleccionado = null;
+    pool = barajar([...ej.opciones]);
+
+    elContador.textContent = `Ejercicio ${indice + 1} de ${EJERCICIOS_HUECOS.length}`;
+    elTema.textContent = ej.tema;
+    elIntro.textContent = ej.intro;
+    btnSiguiente.hidden = true;
+    btnVerificar.hidden = false;
+    btnVerificar.disabled = true;
+    limpiarFeedback();
+    pintarCodigo();
+    pintarOpciones();
+  }
+
+  btnVerificar.addEventListener("click", verificar);
+  btnSiguiente.addEventListener("click", () => {
+    indice = indice + 1 > EJERCICIOS_HUECOS.length ? 1 : indice + 1;
+    if (indice > EJERCICIOS_HUECOS.length) indice = 1;
+    if (btnSiguiente.textContent.includes("Empezar")) indice = 0;
+    btnSiguiente.textContent = "Siguiente ▶";
+    cargar();
+  });
+
+  cargar();
+}
