@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tema 01 · ¿Por qué existen los estándares web? — Apuntes Web</title>
+  <meta name="description" content="Ventajas de los estándares web, excusas que no cuelan, museo de horrores y mapa del currículum.">
+  <meta name="theme-color" content="#FFE156">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>✳</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>★ Tema 01</span><span>★ Estándares web</span><span>★ HTML + CSS + JS</span><span>★ Buenas prácticas</span>
+      <span>★ Tema 01</span><span>★ Estándares web</span><span>★ HTML + CSS + JS</span><span>★ Buenas prácticas</span>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <a class="logo" href="index.html">✳ APUNTES.WEB</a>
+    <a class="btn small blue" href="index.html">← Volver a los temas</a>
+  </header>
+
+  <main class="container">
+
+    <section class="tema-hero">
+      <span class="tema-badge">Tema 01</span>
+      <h1>¿Por qué existen los estándares web?</h1>
+      <p class="fuente">📚 Fuente: <em>Currículum d'estàndards web</em>, Chris Mills (Opera, 2008), vía UOC Mosaic.
+        <a href="https://mosaic.uoc.edu/ac/le/ca/index.html" target="_blank" rel="noopener">artículo original ↗</a>
+      </p>
+    </section>
+
+    <section class="section">
+      <h2 class="box-title">🎬 La idea en una frase</h2>
+      <div class="callout idea" style="margin:0;">
+        <p style="margin:0;">Un tipo de Opera (Chris Mills) se enamoró de enseñar estándares web y creó un <b>curso
+        gratuito, abierto y sin prerrequisitos</b>… porque muchas universidades aún penalizaban a los alumnos
+        por usar buenas prácticas. Sí, eso decía.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="box-title alt3">🧒 Explicado como a un niño de 10 años</h2>
+      <p><b>Imagina que la web son las carreteras:</b> los semáforos significan lo mismo en todas las ciudades
+      y por eso nadie se choca. Los estándares web son exactamente eso: normas comunes para que tu página
+      "circule" bien en todos los navegadores.</p>
+      <ul>
+        <li><b>Tu página</b> → un coche.</li>
+        <li><b>Los navegadores</b> → las ciudades por las que circula.</li>
+        <li><b>HTML + CSS bien escritos</b> → pasar la ITV: no es capricho, es lo que te deja circular sin sustos.</li>
+        <li><b>Tablas para maquetar y GIFs espaciadores</b> → circular con ruedas cuadradas: el coche se mueve, pero ¿por qué sufrir?</li>
+        <li><b>El validador W3C</b> → el examinador de la autoescuela que te dice exactamente qué está mal antes de que te multen.</li>
+      </ul>
+      <div class="callout tip">
+        <p class="callout-title">📋 Para entrenar el ojo</p>
+        <p style="margin:0;">Entra en cualquier web que uses a diario, pulsa <code>F12</code> (herramientas del navegador)
+        y mira su código. Luego piensa: ¿qué crees que cambiaría si no siguiera estándares? Respuesta corta: tú
+        no podrías verla bien desde tu móvil.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="box-title alt">💪 Las 5 ventajas de los estándares</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Ventaja</th><th>Qué significa en la práctica</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>✏️ Código eficiente</b></td>
+              <td>Separas contenido (HTML), estilo (CSS) y comportamiento (JS). Escribes una vez, reutilizas siempre.</td>
+            </tr>
+            <tr>
+              <td><b>🔧 Fácil mantenimiento</b></td>
+              <td>¿Cambiar el color corporativo? Lo cambias <b>en un solo sitio</b> y se propaga a toda la web.</td>
+            </tr>
+            <tr>
+              <td><b>♿ Accesibilidad</b></td>
+              <td>Personas con discapacidad (ceguera, movilidad reducida) pueden usar tu web sin esfuerzo extra.</td>
+            </tr>
+            <tr>
+              <td><b>📱 Compatibilidad</b></td>
+              <td>Tu web funciona en Windows, Mac, Linux, móviles, TVs, consolas… Y hay <b>más móviles que PCs</b> en el mundo.</td>
+            </tr>
+            <tr>
+              <td><b>🔍 SEO</b></td>
+              <td>HTML limpio y semántico = Google te adora = mejores posiciones = más negocio.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="box-title alt2">🙄 Las 5 excusas (y por qué no cuelan)</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Excusa</th><th>Realidad</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="strike">"No me han formado en eso"</td>
+              <td>Precisamente por eso existe el curso, que es <b>gratis</b>. Excusa eliminada.</td>
+            </tr>
+            <tr>
+              <td class="strike">"Mi empresa no me deja"</td>
+              <td>Con estándares la web rinde mejor en buscadores y llega a más público. ¿Puede una empresa permitirse ignorar eso? No.</td>
+            </tr>
+            <tr>
+              <td class="strike">"Así cobro igual"</td>
+              <td>Con estándares escribes más rápido, mantienes mejor y <b>cobras más</b>. Decide tú.</td>
+            </tr>
+            <tr>
+              <td class="strike">"Es muy difícil"</td>
+              <td>Mentira: es tan fácil como los métodos viejos, y con más ventajas.</td>
+            </tr>
+            <tr>
+              <td class="strike">"Los navegadores no los soportan"</td>
+              <td>Eso era <b>antes</b>: los navegadores actuales los soportan todos bien.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="box-title alt3">🏛️ El museo de horrores</h2>
+      <p>Lo que la gente hacía "antes" (¡y aún hoy!):</p>
+      <div class="callout horror">
+        <p class="callout-title">⚠ Prohibido hacer esto</p>
+        <ul>
+          <li><b>Maquetar con tablas gigantes</b> → las tablas son para datos, no para colocar cosas.</li>
+          <li><b>GIFs espaciadores invisibles</b> → trucos para alinear; basura de etiquetas por todas partes.</li>
+          <li><b>Menús hechos solo con JavaScript</b> → si el JS falla o usas lector de pantalla, adiós navegación.</li>
+          <li><b>Etiquetas <code>&lt;font&gt;</code> por doquier</b> → estilo mezclado en el HTML = infierno de mantenimiento.</li>
+        </ul>
+      </div>
+      <div class="callout tip">
+        <p class="callout-title">✔ Moraleja</p>
+        <p style="margin:0;">Aprende las buenas prácticas <b>desde el principio</b> y evitarás desaprender cosas malas después.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="box-title">🗺️ Mapa del currículum (38 artículos)</h2>
+      <ul>
+        <li><b>Introducción</b> → historia de Internet, cómo funciona, el modelo HTML + CSS + JS.</li>
+        <li><b>Conceptos de diseño</b> → arquitectura de la información, qué necesita una buena web, color y tipografía.</li>
+        <li><b>HTML</b> → etiquetas, listas, imágenes, enlaces, tablas, formularios y validación.</li>
+        <li><b>Accesibilidad</b> → conceptos y pruebas.</li>
+        <li><b>CSS</b> → cascada y herencia, texto, modelo de caja, fondos, floats y posicionamiento.</li>
+        <li><b>Estructuras</b> → cabeceras, pies, columnas y plantillas.</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2 class="box-title alt2">🧠 Auto-test rápido</h2>
+      <p>Pulsa cada pregunta para ver la respuesta. Sin trampas, que luego viene el examen.</p>
+
+      <details class="q">
+        <summary>1. ¿Cuáles son las 3 capas del modelo de estándares web y qué hace cada una?</summary>
+        <div class="a"><div class="a-box"><b>HTML</b> = contenido/estructura · <b>CSS</b> = presentación/estilo · <b>JavaScript</b> = comportamiento/interacción.</div></div>
+      </details>
+
+      <details class="q">
+        <summary>2. ¿Por qué NO se debe maquetar una web usando tablas?</summary>
+        <div class="a"><div class="a-box">Las tablas son para datos tabulares. Usarlas para colocar elementos añade etiquetado superfluo, dificulta el mantenimiento y empeora la accesibilidad.</div></div>
+      </details>
+
+      <details class="q">
+        <summary>3. Nombra al menos 3 ventajas de usar estándares web.</summary>
+        <div class="a"><div class="a-box">Cualquiera de estas: código eficiente y reutilizable, fácil mantenimiento, accesibilidad, compatibilidad entre dispositivos y mejor posicionamiento en buscadores (SEO).</div></div>
+      </details>
+
+      <details class="q">
+        <summary>4. ¿Qué era un "GIF espaciador" y por qué era mala práctica?</summary>
+        <div class="a"><div class="a-box">Una imagen invisible que se usaba para ajustar la colocación de elementos. Usa las imágenes para un fin que no es el suyo y genera etiquetado superfluo.</div></div>
+      </details>
+
+      <details class="q">
+        <summary>5. Verdadero o falso: los navegadores actuales tienen buena compatibilidad con los estándares web.</summary>
+        <div class="a"><div class="a-box"><b>Verdadero.</b> Antes era un problema de verdad, hoy todos los navegadores modernos los soportan bien.</div></div>
+      </details>
+
+      <details class="q">
+        <summary>6. ¿Quién creó el currículum de estándares web y bajo qué licencia se publica?</summary>
+        <div class="a"><div class="a-box"><b>Chris Mills</b> (Opera), bajo licencia <b>Creative Commons</b>: gratuito y reutilizable reconociendo la autoría.</div></div>
+      </details>
+    </section>
+
+    <div class="dominado-bar">
+      <button class="btn btn-dominado" data-dominar="tema-01"><span>✔ Marcar tema como dominado</span></button>
+    </div>
+
+  </main>
+
+  <footer>
+    <p class="big">★ Hecho con estándares web ★</p>
+    <p>Resúmenes escritos con nuestras palabras para repasar en clase.</p>
+    <p>HTML + CSS + un poquito de JS · Sin frameworks, como manda el temario.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tema 04 · Tipografía en CSS: estilos de texto y fuentes web — Apuntes Web</title>
+  <meta name="description" content="Propiedades de fuente y diseño de texto en CSS, fuentes seguras para la web y fuentes web con @font-face y Google Fonts.">
+  <meta name="theme-color" content="#FFE156">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>✳</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>★ Tema 04</span><span>★ Tipografía</span><span>★ font-family</span><span>★ Fuentes web</span><span>★ Google Fonts</span>
+      <span>★ Tema 04</span><span>★ Tipografía</span><span>★ font-family</span><span>★ Fuentes web</span><span>★ Google Fonts</span>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <a class="logo" href="index.html">✳ APUNTES.WEB</a>
+    <a class="btn small blue" href="index.html">← Volver a los temas</a>
+  </header>
+
+  <main class="container">
+
+    <section class="tema-hero">
+      <span class="tema-badge">Tema 04</span>
+      <h1>Tipografía en CSS</h1>
+      <p class="fuente">📚 Fuentes:
+        <a href="https://developer.mozilla.org/es/docs/Learn/CSS/Styling_text/Fundamentals" target="_blank" rel="noopener">Fundamentos del estilo de texto (MDN) ↗</a> ·
+        <a href="https://developer.mozilla.org/es/docs/Learn/CSS/Styling_text/Web_fonts" target="_blank" rel="noopener">Fuentes web (MDN) ↗</a>
+      </p>
+    </section>
+
+    <section class="section">
+      <h2 class="box-title">🎬 La idea en una frase</h2>
+      <div class="callout idea" style="margin:0;">
+        <p style="margin:0;">Las propiedades de texto se dividen en dos familias: las de <b>fuente</b> (qué letra, qué tamaño, qué peso)
+        y las de <b>diseño de texto</b> (alineación, interlineado, espaciado). Si ninguna fuente instalada te convence,
+        las <b>fuentes web</b> descargan el archivo de la tipografía contigo.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="box-title alt3">🧒 Explicado como a un niño de 10 años</h2>
+      <p><b>Las fuentes son como los bolígrafos de clase.</b> Algunos los tiene todo el mundo, otros los
+      traes tú de casa, y siempre puedes decir "si no tienes este, usa aquel otro".</p>
+      <ul>
+        <li><b>Fuentes seguras para la web</b> → el boli Bic azul: lo tiene todo el mundo, así que lo que escribas se leerá en cualquier casa.</li>
+        <li><b>La pila (<code>font-family</code>)</b> → la frase "si no tienes el verde, usa el azul; y si no, cualquier boli de punta fina". Cada opción separada por comas; la última (la genérica) es "cualquier boli de punta fina".</li>
+        <li><b>Fuentes web / <code>@font-face</code></b> → traerte tu propio boli especial de casa: te lo descargas contigo y escribes con él donde sea.</li>
+        <li><b>Google Fonts</b> → la tienda de bolis gratis que está al lado del cole: eliges, copias y listo.</li>
+        <li><b><code>em</code> / <code>rem</code></b> → copiar el volumen de voz: <code>em</code> copia al que tienes al lado (y si hay mucha gente en medio, te pierdes); <code>rem</code> copia siempre a la profe al fondo (siempre lo mismo, sin sustos).</li>
+        <li><b><code>line-height</code></b> → el aire que dejas entre líneas al escribir en el cuaderno: sin aire se hace bola; con 1.5–2 respira.</li>
+      </ul>
+      <div class="callout tip">
+        <p class="callout-title">📋 Google Fonts en 4 pasos</p>
+        <ol style="margin:0; padding-left:1.3rem;">
+          <li>Entra en <a href="https://fonts.google.com/" target="_blank" rel="noopener">fonts.google.com ↗</a> y elige una fuente que te guste.</li>
+          <li>Pulsa el botón <b>+</b> de esa fuente y abre la barra de abajo ("n familias seleccionadas").</li>
+          <li>Copia la línea de <code>&lt;link&gt;</code> y pégala dentro de tu <code>&lt;head&gt;</code>.</li>
+          <li>En tu CSS escribe: <code>body { font-family: "NombreDeLaFuente", sans-serif; }</code> (la genérica del final, nunca se olvida).</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="box-title alt">✏️ Propiedades de fuente</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Propiedad</th><th>Qué hace</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>color</code></td><td>Color del texto (y de sus decoraciones).</td></tr>
+            <tr><td><code>font-family</code></td><td>La fuente. Mejor una <b>pila</b>: <code>"Trebuchet MS", Verdana, sans-serif</code>.</td></tr>
+            <tr><td><code>font-size</code></td><td>Tamaño: <code>px</code> (absoluto), <code>em</code> (relativo al padre), <code>rem</code> (relativo a la raíz → más predecible).</td></tr>
+            <tr><td><code>font-style</code></td><td><code>normal</code> / <code>italic</code> / <code>oblique</code> (cursiva simulada).</td></tr>
+            <tr><td><code>font-weight</code></td><td><code>normal</code> / <code>bold</code> (o 100–900 para variantes finas).</td></tr>
+            <tr><td><code>text-transform</code></td><td><code>uppercase</code>, <code>lowercase</code>, <code>capitalize</code>… sin tocar el HTML.</td></tr>
+            <tr><td><code>text-decoration</code></td><td>Subrayado, tachado, sobre-rayado… o <code>none</code> para quitar el subrayado de los enlaces.</td></tr>
+            <tr><td><code>text-shadow</code></td><td>Sombra: <code>desplazamientoX desplazamientoY desenfoque color</code>. Admite varias separadas por comas.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout tip">
+        <p class="callout-title">✔ Pila de fuentes (font stack)</p>
+        <p style="margin:0;">El navegador recorre la lista y usa la <b>primera que tenga instalada</b>. Termina siempre con una
+        <b>genérica</b> (<code>serif</code>, <code>sans-serif</code>, <code>monospace</code>…) como red de seguridad.
+        Los nombres con espacios van entre comillas: <code>"Trebuchet MS"</code>.</p>
+      </div>
+      <div class="callout note">
+        <p class="callout-title">📌 Fuentes seguras para la web</p>
+        <p style="margin:0;">Las instaladas en casi todos los sistemas: <b>Arial, Courier New, Georgia, Times New Roman, Trebuchet MS y Verdana</b>.
+        Úsalas solas o como alternativas en la pila. <code>Trebuchet MS</code> ojo: no está en móviles.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="box-title alt2">📐 Diseño de texto</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Propiedad</th><th>Qué hace</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>text-align</code></td><td><code>left</code> / <code>right</code> / <code>center</code> / <code>justify</code> (con cuidado: puede quedar feo con palabras largas).</td></tr>
+            <tr><td><code>line-height</code></td><td>Altura de línea. Mejor <b>sin unidad</b> (multiplica el font-size): legible ≈ <code>1.5–2</code>.</td></tr>
+            <tr><td><code>letter-spacing</code> / <code>word-spacing</code></td><td>Espacio entre letras / palabras. Para toques finos de diseño.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Y la <b>propiedad abreviada</b> <code>font</code> que lo junta casi todo:
+      <code>font: italic normal bold normal 3em/1.5 "Helvetica", "Arial", sans-serif;</code>
+      (solo <code>font-size</code> y <code>font-family</code> son obligatorias; entre tamaño e interlineado va una barra <code>/</code>).</p>
+    </section>
+
+    <section class="section">
+      <h2 class="box-title alt3">🌐 Fuentes web: tu tipografía, donde sea</h2>
+      <p>Las <b>fuentes web</b> descargan el archivo de la fuente junto con la página: cualquier navegador moderno las usa.
+      Ojo con la <b>licencia</b>: las fuentes se compran o se acredita su autor; no se roban.</p>
+      <div class="callout tip">
+        <p class="callout-title">✔ El método de siempre: Google Fonts</p>
+        <p style="margin:0;">Gratis y sin registro: elige la fuente en
+        <a href="https://fonts.google.com/" target="_blank" rel="noopener">fonts.google.com ↗</a>, copia el
+        <code>&lt;link&gt;</code> en tu <code>&lt;head&gt;</code> y usa su <code>font-family</code> en el CSS. Exactamente lo que
+        hace esta web de apuntes con Archivo Black y Space Grotesk.</p>
+      </div>
+      <div class="callout note">
+        <p class="callout-title">📌 El método artesano: @font-face</p>
+        <p style="margin:0;">Declaras la fuente al inicio del CSS y luego la usas como cualquier otra. Sirves varios formatos
+        (<code>woff2</code> primero, es el más eficiente) por compatibilidad:</p>
+        <p style="margin:.6rem 0 0;"><code>@font-face { font-family: "miFuente"; src: url("miFuente.woff2") format("woff2"), url("miFuente.woff") format("woff"); }</code></p>
+        <p style="margin:.6rem 0 0;">Generadores como el de Font Squirrel crean el paquete con todos los formatos y el CSS listo.</p>
+      </div>
+      <p><b>Extra moderno:</b> las <b>fuentes variables</b> meten grosores y anchos enteros en un solo archivo (un solo descarga para thin→black).</p>
+      <div class="callout horror">
+        <p class="callout-title">⚠ Museo de horrores</p>
+        <ul>
+          <li>Pila de fuentes <b>sin genérica</b> al final: si fallan todas, el navegador pone lo que quiera.</li>
+          <li>Usar fuentes <b>sin licencia</b> "porque las encontré por ahí".</li>
+          <li>Tamaños solo en <code>px</code> en todo el proyecto: los usuarios no pueden ampliar el texto en su navegador.</li>
+          <li>Cursivas con <code>font-style</code> en bloques enteros "porque queda bonito": la cursiva es para énfasis, no para muros de texto.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="box-title">🧠 Auto-test rápido</h2>
+      <p>Pulsa cada pregunta para ver la respuesta.</p>
+
+      <details class="q">
+        <summary>1. ¿Qué es una pila de fuentes y por qué terminar con una genérica?</summary>
+        <div class="a"><div class="a-box">Una lista de fuentes separadas por comas; el navegador usa la primera disponible. La genérica (<code>sans-serif</code>, <code>serif</code>…) es la red de seguridad si <b>ninguna</b> de las anteriores está instalada.</div></div>
+      </details>
+
+      <details class="q">
+        <summary>2. Diferencia entre em y rem.</summary>
+        <div class="a"><div class="a-box"><code>1em</code> = tamaño de fuente del <b>elemento padre</b> (se complica con anidamientos). <code>1rem</code> = tamaño de fuente del elemento raíz (<code>&lt;html&gt;</code>, 16px por defecto): mucho más fácil de calcular.</div></div>
+      </details>
+
+      <details class="q">
+        <summary>3. ¿Qué propiedad y valor quitan el subrayado de un enlace?</summary>
+        <div class="a"><div class="a-box"><code>text-decoration: none;</code> sobre el <code>&lt;a&gt;</code>. Ojo a la accesibilidad: asegúrate de que el enlace siga siendo reconocible (color, peso, hover…).</div></div>
+      </details>
+
+      <details class="q">
+        <summary>4. ¿Para qué sirve text-transform y qué ventaja tiene sobre escribir el texto directamente en mayúsculas?</summary>
+        <div class="a"><div class="a-box">Transforma la visualización (<code>uppercase</code>, <code>lowercase</code>, <code>capitalize</code>). El HTML sigue conteniendo el texto normal: mejor para lectores de pantalla, SEO y mantenimiento.</div></div>
+      </details>
+
+      <details class="q">
+        <summary>5. ¿Cuál es la estructura mínima de un bloque @font-face?</summary>
+        <div class="a"><div class="a-box"><code>@font-face { font-family: "nombre"; src: url("archivo.woff2") format("woff2"); }</code>. Después usas <code>font-family: "nombre", sans-serif;</code> como con cualquier fuente.</div></div>
+      </details>
+
+      <details class="q">
+        <summary>6. Nombra dos formas de usar Google Fonts en una página.</summary>
+        <div class="a"><div class="a-box">1) Pegar el <code>&lt;link&gt;</code> que te da en el <code>&lt;head&gt;</code> (recomendado, carga en paralelo) o 2) usar <code>@import</code> al inicio del CSS. En ambos casos luego aplicas su <code>font-family</code>.</div></div>
+      </details>
+
+      <details class="q">
+        <summary>7. ¿Qué valor de line-height se recomienda para texto de párrafo y cómo se escribe mejor?</summary>
+        <div class="a"><div class="a-box">Alrededor de <b>1.5 a 2</b> veces el tamaño de la fuente. Se escribe <b>sin unidad</b> (<code>line-height: 1.6;</code>) para que actúe como multiplicador y se herede correctamente.</div></div>
+      </details>
+
+      <details class="q">
+        <summary>8. ¿Qué hace text-shadow y cuáles son sus valores?</summary>
+        <div class="a"><div class="a-box">Dibuja una sombra tras el texto: <code>text-shadow: x y desenfoque color;</code> (los dos primeros son obligatorios). Admite varias sombras separadas por comas.</div></div>
+      </details>
+    </section>
+
+    <div class="dominado-bar">
+      <button class="btn btn-dominado" data-dominar="tema-04"><span>✔ Marcar tema como dominado</span></button>
+    </div>
+
+  </main>
+
+  <footer>
+    <p class="big">★ Hecho con estándares web ★</p>
+    <p>Resúmenes escritos con nuestras palabras para repasar en clase.</p>
+    <p>HTML + CSS + un poquito de JS · Sin frameworks, como manda el temario.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

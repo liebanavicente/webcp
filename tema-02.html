@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tema 02 · Anatomía de una página web: head, texto y depuración — Apuntes Web</title>
+  <meta name="description" content="El modelo HTML+CSS+JS, el head y sus metadatos, cómo estructurar texto y cómo depurar errores de HTML.">
+  <meta name="theme-color" content="#FFE156">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>✳</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>★ Tema 02</span><span>★ Las 3 capas</span><span>★ El &lt;head&gt;</span><span>★ Texto estructurado</span><span>★ Depuración</span>
+      <span>★ Tema 02</span><span>★ Las 3 capas</span><span>★ El &lt;head&gt;</span><span>★ Texto estructurado</span><span>★ Depuración</span>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <a class="logo" href="index.html">✳ APUNTES.WEB</a>
+    <a class="btn small blue" href="index.html">← Volver a los temas</a>
+  </header>
+
+  <main class="container">
+
+    <section class="tema-hero">
+      <span class="tema-badge">Tema 02</span>
+      <h1>Anatomía de una página web</h1>
+      <p class="fuente">📚 Fuentes:
+        <a href="https://mosaic.uoc.edu/ac/le/ca/m1/ud3/index.html" target="_blank" rel="noopener">El modelo de estándares web (UOC) ↗</a> ·
+        <a href="https://developer.mozilla.org/es/docs/Learn_web_development/Core/Structuring_content/Webpage_metadata" target="_blank" rel="noopener">Metadatos en HTML (MDN) ↗</a> ·
+        <a href="https://developer.mozilla.org/es/docs/Learn_web_development/Core/Structuring_content/Headings_and_paragraphs" target="_blank" rel="noopener">Encabezados y párrafos (MDN) ↗</a> ·
+        <a href="https://developer.mozilla.org/es/docs/Learn_web_development/Core/Structuring_content/Debugging_HTML" target="_blank" rel="noopener">Depuración de HTML (MDN) ↗</a>
+      </p>
+    </section>
+
+    <section class="section">
+      <h2 class="box-title">🎬 La idea en una frase</h2>
+      <div class="callout idea" style="margin:0;">
+        <p style="margin:0;">Una página web son <b>3 capas separadas</b>: <code>HTML</code> pone el contenido
+        (el esqueleto), <code>CSS</code> pone el estilo (la ropa) y <code>JavaScript</code> pone el comportamiento
+        (el movimiento). Y el <code>&lt;head&gt;</code> es la <b>ficha técnica invisible</b> que describe el documento.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="box-title alt3">🧒 Explicado como a un niño de 10 años</h2>
+      <p><b>Una página web es como un libro:</b> tiene una ficha técnica que casi nadie lee, un título en el lomo
+      que se ve desde la estantería, y unas páginas que es lo que lees de verdad.</p>
+      <ul>
+        <li><b>El <code>&lt;head&gt;</code></b> → la etiqueta de dentro del cuello de una camiseta: nadie la ve puesta, pero ahí pone la talla, la marca y de qué está hecha.</li>
+        <li><b>El <code>&lt;title&gt;</code></b> → el nombre del libro en el <b>lomo</b>: se ve en la estantería (la pestaña del navegador, Google). El <code>&lt;h1&gt;</code> es el título de la <b>primera página</b>: se ve dentro del libro.</li>
+        <li><b>El <code>charset</code></b> → avisar al bibliotecario de en qué idioma está escrito el libro, para no leerlo con las letras cambiadas.</li>
+        <li><b>Las etiquetas HTML</b> → cajas de cartón con la etiqueta por fuera: cada cosa va en su caja (<code>&lt;p&gt;</code>, <code>&lt;h1&gt;</code>, <code>&lt;img&gt;</code>…).</li>
+        <li><b>Depurar</b> → el navegador es un profesor <b>muy bueno y muy callado</b>: corrige tus errores en silencio y sigue leyendo. El validador W3C es el profe que SÍ te marca los fallos con boli rojo.</li>
+      </ul>
+      <div class="callout tip">
+        <p class="callout-title">📋 Tu primera página en 6 pasos</p>
+        <ol style="margin:0; padding-left:1.3rem;">
+          <li>Abre tu editor de código y crea un archivo: <code>index.html</code>.</li>
+          <li>Escribe el esqueleto: <code>&lt;!DOCTYPE html&gt;</code>, <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code> y <code>&lt;body&gt;</code>.</li>
+          <li>Dentro del head, pon <code>&lt;meta charset="utf-8"&gt;</code> y un <code>&lt;title&gt;</code>.</li>
+          <li>En el body escribe un <code>&lt;h1&gt;</code> y dos <code>&lt;p&gt;</code> con lo que quieras.</li>
+          <li>Guarda y haz doble clic en el archivo: se abre en tu navegador. ¡Eso es tu primera web!</li>
+          <li>Copia el código en <a href="https://validator.w3.org/" target="_blank" rel="noopener">validator.w3.org ↗</a> y corrige lo que te marque.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="box-title alt">🍰 Las 3 capas del modelo</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Capa</th><th>Rol</th><th>Para qué se usa</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>HTML</b></td>
+              <td>Estructura</td>
+              <td>Etiquetar el contenido: encabezados, párrafos, listas, imágenes, enlaces…</td>
+            </tr>
+            <tr>
+              <td><b>CSS</b></td>
+              <td>Presentación</td>
+              <td>Colores, fuentes, fondos, márgenes, posición de los elementos…</td>
+            </tr>
+            <tr>
+              <td><b>JavaScript</b></td>
+              <td>Comportamiento</td>
+              <td>Validar formularios, menús, animaciones, drag &amp; drop, cambiar estilos sobre la marcha…</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout note">
+        <p class="callout-title">📌 ¿Por qué separarlas?</p>
+        <p style="margin:0;">Eficiencia (archivos más ligeros), mantenimiento (cambias una vez, se aplica en todas
+        las páginas), accesibilidad, compatibilidad entre dispositivos y SEO. Si esto te suena, es porque ya lo vimos
+        en el <a href="tema-01.html">tema 01</a>. No es un mantra: son las mismas 5 ventajas de siempre.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="box-title alt2">🗂️ El &lt;head&gt;: la ficha técnica</h2>
+      <p>Todo lo que va dentro del <code>&lt;head&gt;</code> <b>no se ve</b> en la página, pero describe el documento
+      para navegadores, buscadores y redes sociales.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Elemento</th><th>Qué hace</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>&lt;title&gt;</code></td>
+              <td>Título del <b>documento</b>: sale en la pestaña del navegador, en los marcadores y en los resultados de Google.</td>
+            </tr>
+            <tr>
+              <td><code>&lt;meta charset="utf-8"&gt;</code></td>
+              <td>Declara la codificación de caracteres (utf-8 = casi todos los idiomas del mundo). Ponla <b>siempre</b>.</td>
+            </tr>
+            <tr>
+              <td><code>name="author" / "description"</code></td>
+              <td>Autor y descripción del contenido. La descripción puede aparecer en los resultados de búsqueda (SEO).</td>
+            </tr>
+            <tr>
+              <td><code>&lt;link rel="icon"&gt;</code></td>
+              <td>El <b>favicon</b>: el iconito de la pestaña. Formato clásico: <code>.ico</code> de 16×16.</td>
+            </tr>
+            <tr>
+              <td><code>&lt;link rel="stylesheet"&gt;</code></td>
+              <td>Enlaza la hoja de estilos CSS externa. Siempre dentro del <code>&lt;head&gt;</code>.</td>
+            </tr>
+            <tr>
+              <td><code>&lt;script src defer&gt;</code></td>
+              <td>Enlaza el JavaScript. <code>defer</code> = "carga el JS <b>después</b> del HTML", así no da errores por elementos que aún no existen.</td>
+            </tr>
+            <tr>
+              <td><code>&lt;html lang="es"&gt;</code></td>
+              <td>Declara el idioma de la página: imprescindible para lectores de pantalla y para el SEO.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout tip">
+        <p class="callout-title">✔ Ojo, que cae en examen</p>
+        <p style="margin:0;"><code>&lt;title&gt;</code> ≠ <code>&lt;h1&gt;</code>: el <code>&lt;title&gt;</code> es el título
+        del <b>documento</b> (pestaña, buscadores) y el <code>&lt;h1&gt;</code> es el título del <b>contenido</b>
+        (lo que se ve en la página). Debe haber un solo <code>&lt;h1&gt;</code> por página.</p>
+      </div>
+      <div class="callout note">
+        <p class="callout-title">🌐 Metadatos para redes sociales</p>
+        <p style="margin:0;">Open Graph (Facebook) y Twitter Cards son metadatos propietarios
+        (<code>og:title</code>, <code>og:image</code>…) que hacen que al compartir un enlace salga con imagen
+        y descripción bonitas. Y olvídate de <code>meta keywords</code>: los buscadores la ignoran desde que los spammers la rellenaban a saco.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="box-title alt3">🔤 HTML vs XHTML</h2>
+      <p>Son casi el mismo lenguaje; la diferencia está en lo estricto que es la sintaxis.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>HTML</th><th>XHTML</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>No distingue mayúsculas/minúsculas</td>
+              <td>Todo en <b>minúsculas</b></td>
+            </tr>
+            <tr>
+              <td>Algunos elementos no se cierran (<code>&lt;p&gt;</code>, <code>&lt;img&gt;</code>…)</td>
+              <td><b>Todo</b> elemento se cierra (<code>&lt;p&gt;…&lt;/p&gt;</code>, <code>&lt;img /&gt;</code>)</td>
+            </tr>
+            <tr>
+              <td>Los valores de atributo pueden ir sin comillas</td>
+              <td>Atributos <b>siempre entre comillas</b></td>
+            </tr>
+            <tr>
+              <td>Atributos abreviables (<code>&lt;option selected&gt;</code>)</td>
+              <td>Forma completa obligatoria (<code>selected="selected"</code>)</td>
+            </tr>
+            <tr>
+              <td>Tipo MIME <code>text/html</code></td>
+              <td>Debería servirse como <code>application/xhtml+xml</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-bottom:0;">Veredicto del currículo: <b>no te obsesiones</b>. Usa el doctype HTML5 y buenas prácticas, y vas sobrado.</p>
+    </section>
+
+    <section class="section">
+      <h2 class="box-title">✍️ Texto con estructura</h2>
+
+      <p><b>Encabezados <code>&lt;h1&gt;</code> a <code>&lt;h6&gt;</code>:</b> 6 niveles, de título principal a sub-sub-subtítulo. Reglas de oro:</p>
+      <ul>
+        <li>Un solo <code>&lt;h1&gt;</code> por página.</li>
+        <li>Respeta la jerarquía: nunca saltes de <code>&lt;h2&gt;</code> a <code>&lt;h4&gt;</code> pasando por encima del <code>&lt;h3&gt;</code>.</li>
+        <li>No uses más de 3 niveles salvo necesidad real; si no, divide el contenido en varias páginas.</li>
+      </ul>
+      <div class="callout note">
+        <p class="callout-title">🤔 ¿Por qué importa la estructura?</p>
+        <ul>
+          <li><b>Usuarios:</b> escaneamos los encabezados buscando lo que nos interesa. Sin ellos, muro de texto = adiós visita.</li>
+          <li><b>SEO:</b> los buscadores tratan los encabezados como palabras clave.</li>
+          <li><b>Lectores de pantalla:</b> sus usuarios navegan <b>saltando de encabezado en encabezado</b>; sin ellos, tienen que escuchar la página entera.</li>
+          <li><b>CSS/JS:</b> necesitan elementos que delimiten el contenido para poder actuar sobre él.</li>
+        </ul>
+      </div>
+
+      <p><b>Listas:</b> <code>&lt;ul&gt;</code> + <code>&lt;li&gt;</code> si el orden no importa (compra), <code>&lt;ol&gt;</code> + <code>&lt;li&gt;</code> si importa (instrucciones paso a paso). Puedes <b>anidar</b> una lista dentro de un <code>&lt;li&gt;</code>.</p>
+
+      <p><b>Énfasis e importancia</b> — otro clásico de examen:</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Semántico (lo que toca usar)</th><th>Presentacional (solo si no queda otra)</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>&lt;em&gt;</code> → énfasis (cambia el significado, cursiva)</td>
+              <td><code>&lt;i&gt;</code> → cursiva sin énfasis: extranjerismos, taxonomía, títulos…</td>
+            </tr>
+            <tr>
+              <td><code>&lt;strong&gt;</code> → importancia fuerte (negrita, tono de voz fuerte)</td>
+              <td><code>&lt;b&gt;</code> → negrita sin importancia: palabras clave, nombres de producto…</td>
+            </tr>
+            <tr>
+              <td>—</td>
+              <td><code>&lt;u&gt;</code> → subrayado (¡cuidado! en la web el subrayado "es de los enlaces")</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-bottom:0;">Un <code>&lt;span&gt;</code> con CSS puede <em>parecer</em> un título, pero no <b>es</b> un título:
+      ni el buscador ni el lector de pantalla lo tratarán como tal. <b>Usa el elemento adecuado para cada cosa.</b></p>
+    </section>
+
+    <section class="section">
+      <h2 class="box-title alt2">🐛 Depurar HTML</h2>
+      <p>HTML es un lenguaje <b>permisivo</b>: el navegador no se queja, <b>arregla los errores por su cuenta</b> y sigue
+      adelante. Suena bien, pero el "arreglo" puede no ser lo que tú querías (y tú sin enterarte).</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Error típico</th><th>Qué hace el navegador</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Elemento sin cerrar (<code>&lt;strong&gt;</code>, <code>&lt;p&gt;</code>…)</td>
+              <td>Lo aplica a todo el texto que sigue, hasta donde "deduce" que termina. Efecto dominó.</td>
+            </tr>
+            <tr>
+              <td>Anidado incorrecto: <code>&lt;strong&gt;&lt;em&gt;…&lt;/strong&gt;&lt;/em&gt;</code></td>
+              <td>Reordena el cierre por ti: <code>&lt;strong&gt;&lt;em&gt;…&lt;/em&gt;&lt;/strong&gt;</code>… y lo que sobre lo empaqueta aparte.</td>
+            </tr>
+            <tr>
+              <td>Atributo sin comillas de cierre: <code>href="https://…&gt;</code></td>
+              <td>El peor de todos: se "come" el resto del documento buscando el cierre y el enlace desaparece.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout tip">
+        <p class="callout-title">🛠️ Tus dos mejores amigos</p>
+        <ul>
+          <li><b>Validador del W3C</b> (<a href="https://validator.w3.org/" target="_blank" rel="noopener">validator.w3.org ↗</a>):
+          pega tu código o sube el archivo y te lista los errores con línea y columna. Para CSS:
+          <a href="https://jigsaw.w3.org/css-validator/" target="_blank" rel="noopener">jigsaw.w3.org/css-validator ↗</a>.</li>
+          <li><b>Herramientas de desarrollo del navegador</b> (F12): el inspector te muestra el DOM <b>real</b> tras los arreglos del navegador.</li>
+        </ul>
+      </div>
+      <div class="callout horror">
+        <p class="callout-title">⚠ Museo de horrores de este tema</p>
+        <ul>
+          <li>Usar <code>&lt;i&gt;</code> y <code>&lt;b&gt;</code> solo porque "quedan bonitos".</li>
+          <li>Un <code>&lt;span&gt;</code> con <code>font-size: 32px</code> disfrazado de título.</li>
+          <li>Rellenar <code>meta keywords</code> con 200 palabras (los buscadores la ignoran, avisados estáis).</li>
+          <li>Confiar en que "el navegador ya arreglará mi HTML" y nunca validar. El navegador no es tu madre.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="box-title alt3">🧠 Auto-test rápido</h2>
+      <p>Pulsa cada pregunta para ver la respuesta.</p>
+
+      <details class="q">
+        <summary>1. ¿Qué diferencia hay entre &lt;title&gt; y &lt;h1&gt;?</summary>
+        <div class="a"><div class="a-box"><code>&lt;title&gt;</code> es el título del <b>documento</b> (pestaña, marcadores, Google) y <code>&lt;h1&gt;</code> es el título del <b>contenido</b> que se ve en la página. Uno por documento; otro uno visible por página.</div></div>
+      </details>
+
+      <details class="q">
+        <summary>2. ¿Para qué sirve &lt;meta charset="utf-8"&gt;?</summary>
+        <div class="a"><div class="a-box">Declara la <b>codificación de caracteres</b> del documento. utf-8 cubre casi todos los idiomas, así la página muestra bien cualquier texto (incluido japonés, acentos, emojis…).</div></div>
+      </details>
+
+      <details class="q">
+        <summary>3. ¿Cuál es la diferencia entre una clase y una ID en CSS?</summary>
+        <div class="a"><div class="a-box">Una <b>ID</b> (<code>#nombre</code>) identifica un único elemento por página; una <b>clase</b> (<code>.nombre</code>) puede aplicarse a varios elementos a la vez.</div></div>
+      </details>
+
+      <details class="q">
+        <summary>4. ¿Por qué se dice que HTML es un lenguaje "permisivo"?</summary>
+        <div class="a"><div class="a-box">Porque el navegador <b>no detiene la ejecución</b> ante errores de sintaxis: los corrige internamente con reglas propias y sigue renderizando. Bueno (la web nunca se rompe del todo) y malo (los errores pasan desapercibidos y el resultado puede no ser el esperado).</div></div>
+      </details>
+
+      <details class="q">
+        <summary>5. ¿Qué diferencia hay entre &lt;em&gt; y &lt;i&gt;? ¿Y entre &lt;strong&gt; y &lt;b&gt;?</summary>
+        <div class="a"><div class="a-box"><code>&lt;em&gt;</code> y <code>&lt;strong&gt;</code> son <b>semánticos</b>: comunican énfasis e importancia (los lectores de pantalla cambian el tono de voz, y el SEO los valora). <code>&lt;i&gt;</code> y <code>&lt;b&gt;</code> son <b>presentacionales</b>: solo aportan estilo (cursiva/negrita) sin significado extra.</div></div>
+      </details>
+
+      <details class="q">
+        <summary>6. ¿Qué etiquetas usarías para una lista de la compra y para instrucciones paso a paso? ¿Y los elementos de cada lista?</summary>
+        <div class="a"><div class="a-box">Compra (orden irrelevante): <code>&lt;ul&gt;</code> con elementos <code>&lt;li&gt;</code>. Instrucciones (orden importa): <code>&lt;ol&gt;</code> con elementos <code>&lt;li&gt;</code>. Las dos usan <code>&lt;li&gt;</code> dentro.</div></div>
+      </details>
+
+      <details class="q">
+        <summary>7. ¿Qué hace el atributo defer en &lt;script src="…" defer&gt;?</summary>
+        <div class="a"><div class="a-box">Le dice al navegador que <b>descargue el JS junto al HTML pero lo ejecute al final</b>, cuando el documento ya está cargado. Así el JavaScript no intenta tocar elementos que aún no existen.</div></div>
+      </details>
+
+      <details class="q">
+        <summary>8. Menciona dos herramientas para encontrar errores en tu HTML.</summary>
+        <div class="a"><div class="a-box">El <b>validador del W3C</b> (validator.w3.org, te lista errores con línea y columna) y las <b>herramientas de desarrollo del navegador</b> (F12 → inspector del DOM).</div></div>
+      </details>
+    </section>
+
+    <div class="dominado-bar">
+      <button class="btn btn-dominado" data-dominar="tema-02"><span>✔ Marcar tema como dominado</span></button>
+    </div>
+
+  </main>
+
+  <footer>
+    <p class="big">★ Hecho con estándares web ★</p>
+    <p>Resúmenes escritos con nuestras palabras para repasar en clase.</p>
+    <p>HTML + CSS + un poquito de JS · Sin frameworks, como manda el temario.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

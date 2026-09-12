@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tema 03 · Secciones, sitios e imágenes — Apuntes Web</title>
+  <meta name="description" content="Las secciones semánticas de una página, cómo planificar un sitio web y cómo insertar imágenes accesibles.">
+  <meta name="theme-color" content="#FFE156">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>✳</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>★ Tema 03</span><span>★ Estructura</span><span>★ Secciones semánticas</span><span>★ Imágenes</span><span>★ Texto alternativo</span>
+      <span>★ Tema 03</span><span>★ Estructura</span><span>★ Secciones semánticas</span><span>★ Imágenes</span><span>★ Texto alternativo</span>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <a class="logo" href="index.html">✳ APUNTES.WEB</a>
+    <a class="btn small blue" href="index.html">← Volver a los temas</a>
+  </header>
+
+  <main class="container">
+
+    <section class="tema-hero">
+      <span class="tema-badge">Tema 03</span>
+      <h1>Secciones, sitios e imágenes</h1>
+      <p class="fuente">📚 Fuentes:
+        <a href="https://developer.mozilla.org/es/docs/Learn/HTML/Introduction_to_HTML/Document_and_website_structure" target="_blank" rel="noopener">Estructura de documentos y sitios web (MDN) ↗</a> ·
+        <a href="https://developer.mozilla.org/es/docs/Learn/HTML/Multimedia_and_embedding/Images_in_HTML" target="_blank" rel="noopener">Imágenes en HTML (MDN) ↗</a>
+      </p>
+    </section>
+
+    <section class="section">
+      <h2 class="box-title">🎬 La idea en una frase</h2>
+      <div class="callout idea" style="margin:0;">
+        <p style="margin:0;">Toda página web tiene <b>las mismas secciones de siempre</b> (cabecera, menú, contenido, lateral, pie)
+        y HTML5 trae una <b>etiqueta semántica para cada una</b>. Y las imágenes son contenido: se insertan con
+        <code>&lt;img&gt;</code> y <b>siempre</b> llevan su texto alternativo.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="box-title alt3">🧒 Explicado como a un niño de 10 años</h2>
+      <p><b>Una página web es como una revista de las de papel.</b> Si abres una revista, verás que SIEMPRE
+      tiene las mismas partes; las páginas web hacen exactamente lo mismo.</p>
+      <ul>
+        <li><b><code>&lt;header&gt;</code></b> → la portada con el nombre de la revista.</li>
+        <li><b><code>&lt;nav&gt;</code></b> → el índice: te dice en qué página está cada cosa.</li>
+        <li><b><code>&lt;main&gt;</code></b> → el artículo grande del centro: es lo que cambia cada mes y lo que de verdad has venido a leer.</li>
+        <li><b><code>&lt;aside&gt;</code></b> → la columnita pequeña de al lado con curiosidades.</li>
+        <li><b><code>&lt;footer&gt;</code></b> → la parte de abajo donde pone © 2026 y el teléfono de redacción.</li>
+        <li><b><code>&lt;article&gt;</code></b> → un artículo que puedes <b>recortar</b> y seguir entendiendo fuera de la revista. <b><code>&lt;section&gt;</code></b> → una parte del mismo periódico que solo tiene sentido dentro de él.</li>
+        <li><b>El <code>alt</code></b> → describir una foto por teléfono a un amigo que no puede verla: cuéntale lo justo para que no se pierda nada.</li>
+        <li><b><code>width</code>/<code>height</code></b> → reservarle hueco a la foto en la mesa <b>antes</b> de que llegue, para que nadie tenga que moverse cuando la pongas.</li>
+        <li><b>Imagen HTML vs fondo CSS</b> → un <b>cuadro colgado</b> en la pared (se mira, es contenido) frente al <b>papel pintado</b> (solo decora).</li>
+      </ul>
+      <div class="callout tip">
+        <p class="callout-title">📋 Analiza cualquier web en 3 pasos</p>
+        <ol style="margin:0; padding-left:1.3rem;">
+          <li>Abre una web que uses a menudo y pulsa <code>F12</code>.</li>
+          <li>Pulsa el icono de la flechita (-selector de elementos-) y toca partes de la página.</li>
+          <li>Mira cómo se ilumina su código e intenta reconocer: ¿dónde está el header? ¿el nav? ¿el footer? Hazlo 5 minutos al día y se te queda grabado.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="box-title alt">🧩 Las secciones de una página típica</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Elemento</th><th>Representa</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>&lt;header&gt;</code></td><td>Introducción de la página (o de un artículo/sección): logo, título, lema.</td></tr>
+            <tr><td><code>&lt;nav&gt;</code></td><td>La <b>navegación principal</b>. Menús secundarios fuera.</td></tr>
+            <tr><td><code>&lt;main&gt;</code></td><td>El contenido <b>particular de esta página</b>. Uno solo por página, directo hijo de <code>&lt;body&gt;</code>.</td></tr>
+            <tr><td><code>&lt;article&gt;</code></td><td>Contenido que <b>tiene sentido por sí solo</b> fuera de la página (una entrada de blog, una noticia).</td></tr>
+            <tr><td><code>&lt;section&gt;</code></td><td>Agrupación temática de contenido; buena práctica: empezarla con un encabezado.</td></tr>
+            <tr><td><code>&lt;aside&gt;</code></td><td>Contenido <b>relacionado indirectamente</b>: enlaces, biografía del autor, publicidad.</td></tr>
+            <tr><td><code>&lt;footer&gt;</code></td><td>Pie de la página (o de sección): copyright, contacto, enlaces rápidos.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout note">
+        <p class="callout-title">📌 Article vs section, la duda eterna</p>
+        <p style="margin:0;">¿Este contenido lo entendería fuera de esta página? → <code>&lt;article&gt;</code> (un post, una ficha de producto).
+        ¿Es solo una parte temática de esta página? → <code>&lt;section&gt;</code>. Puedes anidar: artículos dentro de secciones y viceversa, según el contexto.</p>
+      </div>
+      <div class="callout tip">
+        <p class="callout-title">✔ ¿Y el &lt;div&gt;?</p>
+        <p style="margin:0;"><code>&lt;div&gt;</code> es la caja <b>genérica sin significado</b>: úsala solo cuando no hay elemento semántico
+        adecuado, casi siempre con un <code>class</code>. Abusar de divs enmaraña el código (ese es el famoso "divitis").
+        Ojo: tu profe las pide en las actividades para practicar: perfecto; en proyectos reales, prioriza la semántica.</p>
+      </div>
+      <p>Comodines ocasionales: <code>&lt;br&gt;</code> (salto de línea dentro de un párrafo: direcciones, poemas) y
+      <code>&lt;hr&gt;</code> (cambio de tema, línea horizontal).</p>
+    </section>
+
+    <section class="section">
+      <h2 class="box-title alt2">🗺️ De página a sitio web</h2>
+      <ul>
+        <li>Identifica el contenido <b>común a todas las páginas</b> (menú, pie con contacto…).</li>
+        <li>Esboza la estructura de cada página (bloques principales).</li>
+        <li>Agrupa el resto del contenido por temas (técnica de <b>clasificación de tarjetas</b>).</li>
+        <li>Dibuja un <b>mapa del sitio</b>: globos para cada página y líneas para los enlaces. La home en el centro, enlazando al resto.</li>
+        <li>La página principal se llama <code>index.html</code>: es la que el navegador abre por defecto al entrar en una carpeta.</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2 class="box-title alt3">🖼️ Imágenes en HTML</h2>
+      <p><code>&lt;img&gt;</code> es un elemento <b>vacío</b> (sin cierre) y de los llamados <b>reemplazados</b> (su contenido
+      viene de un archivo externo). Mínimo imprescindible: <code>src</code> (ruta) y <code>alt</code> (descripción).</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Atributo / elemento</th><th>Para qué</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>src</code></td><td>Ruta a la imagen: relativa (<code>images/foto.jpg</code>) preferida sobre absoluta. Nombres descriptivos = SEO (<code>dinosaur.jpg</code> &gt; <code>img835.png</code>).</td></tr>
+            <tr><td><code>alt</code></td><td>Texto alternativo: lo ven los lectores de pantalla, aparece si la imagen falla y lo leen los buscadores. <b>Decorativa →</b> <code>alt=""</code> · <b>con información →</b> describe lo esencial, sin repetir el texto del artículo.</td></tr>
+            <tr><td><code>width</code> / <code>height</code></td><td>Dimensiones reales en píxeles. El navegador <b>reserva el hueco</b> mientras carga: la página no "salta". Para cambiar el tamaño de verdad, edita la imagen o usa CSS.</td></tr>
+            <tr><td><code>title</code></td><td>Tooltip al pasar el ratón. <b>No recomendado</b>: invisible para teclado y lectores de pantalla; mejor pon esa info en el texto o en un <code>figcaption</code>.</td></tr>
+            <tr><td><code>&lt;figure&gt;</code> + <code>&lt;figcaption&gt;</code></td><td>Vinculan <b>semánticamente</b> la imagen con su pie de foto (un div con un párrafo no lo hace).</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout tip">
+        <p class="callout-title">🖼️ Imagen HTML vs fondo CSS</p>
+        <p style="margin:0;">¿La imagen aporta información/contenido? → <code>&lt;img&gt;</code>. ¿Es solo decoración?
+        → <code>background-image</code> en CSS. El fondo CSS no tiene texto alternativo: es invisible para lectores de pantalla.</p>
+      </div>
+      <div class="callout horror">
+        <p class="callout-title">⚠ Museo de horrores</p>
+        <ul>
+          <li><b>Hotlinking</b>: apuntar <code>src</code> a la imagen de otro servidor. Ilegal (robo de ancho de banda), lento y si la borran, te quedas con un hueco.</li>
+          <li>Imágenes <b>sin</b> <code>alt</code>: un lector de pantalla no sabe qué hay ahí.</li>
+          <li><b>Texto incrustado en imágenes</b>: ni se selecciona, ni lo lee Google, ni lo lee un lector de pantalla. El texto es texto.</li>
+          <li>Redimensionar estirando con <code>width</code>/<code>height</code>: píxeles borrosos y proporciones rotas.</li>
+          <li>Nombres de archivo tipo <code>IMG_0234.jpg</code>: oportunidad de SEO tirada a la basura.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="box-title">🧠 Auto-test rápido</h2>
+      <p>Pulsa cada pregunta para ver la respuesta.</p>
+
+      <details class="q">
+        <summary>1. ¿Qué elementos semánticos usarías para la cabecera, el menú principal, el contenido principal y el pie?</summary>
+        <div class="a"><div class="a-box"><code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code> (una sola vez por página) y <code>&lt;footer&gt;</code>.</div></div>
+      </details>
+
+      <details class="q">
+        <summary>2. ¿Qué diferencia hay entre &lt;article&gt; y &lt;section&gt;?</summary>
+        <div class="a"><div class="a-box"><code>&lt;article&gt;</code> envuelve contenido <b>autónomo</b> que tendría sentido fuera de la página (una entrada de blog). <code>&lt;section&gt;</code> agrupa partes temáticas de la página, idealmente con su propio encabezado.</div></div>
+      </details>
+
+      <details class="q">
+        <summary>3. ¿Cuándo es correcto usar un &lt;div&gt;?</summary>
+        <div class="a"><div class="a-box">Cuando <b>ningún elemento semántico</b> describe ese grupo de contenido y necesitas una caja para aplicar CSS/JS. Normalmente con una <code>class</code>, y usando los divs lo menos posible.</div></div>
+      </details>
+
+      <details class="q">
+        <summary>4. ¿Para qué sirve el atributo alt? ¿Qué valor le pones a una imagen decorativa?</summary>
+        <div class="a"><div class="a-box">Describe la imagen para quien no puede verla (lector de pantalla, imagen rota, buscador). Si la imagen es <b>decorativa</b>, se usa <code>alt=""</code> para que el lector de pantalla la ignore.</div></div>
+      </details>
+
+      <details class="q">
+        <summary>5. ¿Qué diferencia hay entre una imagen &lt;img&gt; y una background-image de CSS?</summary>
+        <div class="a"><div class="a-box"><code>&lt;img&gt;</code> es <b>contenido</b>: lleva <code>alt</code>, la ve Google, la escuchan los lectores de pantalla. <code>background-image</code> es <b>decoración</b>: no aporta significado ni texto alternativo.</div></div>
+      </details>
+
+      <details class="q">
+        <summary>6. ¿Qué aportan &lt;figure&gt; y &lt;figcaption&gt; frente a un div con un párrafo debajo de la imagen?</summary>
+        <div class="a"><div class="a-box">Vinculan <b>semánticamente</b> la imagen con su pie de foto: las tecnologías de apoyo entienden que el <code>figcaption</code> describe el contenido de la figura, aunque haya muchas imágenes seguidas.</div></div>
+      </details>
+
+      <details class="q">
+        <summary>7. ¿Por qué conviene declarar width y height de la imagen en el HTML?</summary>
+        <div class="a"><div class="a-box">Para que el navegador <b>reserve el espacio</b> antes de que cargue la imagen: evita que el contenido "salte" durante la carga. (Y el tamaño real se edita en un editor de imágenes o con CSS, no estirando atributos.)</div></div>
+      </details>
+
+      <details class="q">
+        <summary>8. ¿Qué es el hotlinking y por qué no debes hacerlo?</summary>
+        <div class="a"><div class="a-box">Apuntar el <code>src</code> de tu imagen a un archivo alojado en el servidor de otra persona. Es <b>ilegal</b> (usan su ancho de banda sin permiso), ralentiza tu página y pierdes el control si la imagen desaparece o la cambian.</div></div>
+      </details>
+    </section>
+
+    <div class="dominado-bar">
+      <button class="btn btn-dominado" data-dominar="tema-03"><span>✔ Marcar tema como dominado</span></button>
+    </div>
+
+  </main>
+
+  <footer>
+    <p class="big">★ Hecho con estándares web ★</p>
+    <p>Resúmenes escritos con nuestras palabras para repasar en clase.</p>
+    <p>HTML + CSS + un poquito de JS · Sin frameworks, como manda el temario.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

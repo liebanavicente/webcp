@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tema 05 · El modelo de caja, floats y position — Apuntes Web</title>
+  <meta name="description" content="Primeros pasos en CSS: selectores, el modelo de caja (content, padding, border, margin), floats y posicionamiento.">
+  <meta name="theme-color" content="#FFE156">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>✳</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>★ Tema 05</span><span>★ El modelo de caja</span><span>★ Selectores</span><span>★ Floats</span><span>★ Position</span>
+      <span>★ Tema 05</span><span>★ El modelo de caja</span><span>★ Selectores</span><span>★ Floats</span><span>★ Position</span>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <a class="logo" href="index.html">✳ APUNTES.WEB</a>
+    <a class="btn small blue" href="index.html">← Volver a los temas</a>
+  </header>
+
+  <main class="container">
+
+    <section class="tema-hero">
+      <span class="tema-badge">Tema 05</span>
+      <h1>El modelo de caja, floats y position</h1>
+      <p class="fuente">📚 Fuentes:
+        <a href="https://developer.mozilla.org/es/docs/Learn/CSS/First_steps/Getting_started" target="_blank" rel="noopener">Primeros pasos en CSS (MDN) ↗</a> ·
+        <a href="https://developer.mozilla.org/es/docs/Learn/CSS/Building_blocks/The_box_model" target="_blank" rel="noopener">El modelo de caja (MDN) ↗</a> ·
+        <a href="https://developer.mozilla.org/es/docs/Learn/CSS/CSS_layout/Floats" target="_blank" rel="noopener">Floats (MDN) ↗</a> ·
+        <a href="https://developer.mozilla.org/es/docs/Web/CSS/position" target="_blank" rel="noopener">position (MDN) ↗</a>
+      </p>
+    </section>
+
+    <section class="section">
+      <h2 class="box-title">🎬 La idea en una frase</h2>
+      <div class="callout idea" style="margin:0;">
+        <p style="margin:0;">En CSS <b>todo son cajas</b>: cada elemento es una caja con contenido, relleno, borde y margen.
+        Entender cómo se miden esas cajas es el 80% del layout. Y para colocarlas: floats para envolver texto,
+        <code>position</code> para sacar elementos del flujo.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="box-title alt3">🧒 Explicado como a un niño de 10 años</h2>
+      <p><b>El modelo de caja es un regalo de cumpleaños.</b> Cuando envuelves un regalo, no metes el juguete
+      a pelo en una caja: pones cosas alrededor. CSS hace exactamente lo mismo con cada elemento.</p>
+      <ul>
+        <li><b>El juguete</b> → el contenido (el texto, la imagen).</li>
+        <li><b>El papel de relleno que lo protege</b> → el <code>padding</code> (espacio por dentro).</li>
+        <li><b>La caja de cartón</b> → el <code>border</code>.</li>
+        <li><b>La distancia que dejas hasta el regalo del vecino</b> → el <code>margin</code> (espacio por fuera).</li>
+        <li><b><code>border-box</code></b> → "la caja mide lo que pone en la etiqueta, punto": si la caja pone 30&nbsp;cm, son 30&nbsp;cm <b>caja incluida</b>. En el modelo estándar, los 30&nbsp;cm son solo del juguete y luego hay que sumar papel y cartón (por eso da dolores de cabeza).</li>
+        <li><b>Colapso de márgenes</b> → si tú pides 2 metros de distancia y tu amigo pide 1, la distancia final es 2: <b>no se suman</b>, gana el mayor.</li>
+        <li><b><code>display: block</code></b> → el amigo que se sienta en medio del banco y estira los brazos: nadie más cabe en su línea. <b><code>inline</code></b> → amigos que caben todos en la misma fila.</li>
+        <li><b>Clase vs ID</b> → la clase es un <b>apodo</b> (pueden tenerlo varios compis); el ID es tu <b>DNI</b> (solo tuyo, uno por página).</li>
+      </ul>
+      <div class="callout idea">
+        <p class="callout-title">🪟 Position, con chicles</p>
+        <ul style="margin:0; padding-left:1.3rem;">
+          <li><b><code>static</code></b> → sentado en tu sitio (el de siempre).</li>
+          <li><b><code>relative</code></b> → te levantas y das un paso, pero tu mochila sigue en tu sitio ocupándolo.</li>
+          <li><b><code>absolute</code></b> → te vas del aula: tu sitio desaparece y los demás se reordenan. Te colocas mirando a tu madre (el ancestro posicionado más cercano).</li>
+          <li><b><code>fixed</code></b> → te pegas con chicle al cristal de la ventana: te ve aunque todo el mundo baje las escaleras (hace scroll).</li>
+          <li><b><code>sticky</code></b> → te quedas pegado a la puerta solo hasta que el profesor (tu contenedor) sale: entonces te vas con él.</li>
+        </ul>
+      </div>
+      <div class="callout tip">
+        <p class="callout-title">📋 Mide una caja con las DevTools en 4 pasos</p>
+        <ol style="margin:0; padding-left:1.3rem;">
+          <li>Abre tu página en el navegador y pulsa <code>F12</code>.</li>
+          <li>Pulsa el icono de la flechita y haz clic sobre cualquier elemento.</li>
+          <li>En la pestaña de estilos busca el dibujito del regalo: verás contenido, padding, border y margin con sus píxeles reales.</li>
+          <li>Cambia un <code>margin</code> a pelo ahí mismo y mira cómo se mueve la caja. Experimentar es gratis.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="box-title alt">🎯 Selectores: cómo apuntas a cada cosa</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Selector</th><th>Ejemplo</th><th>Selecciona…</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Elemento</td><td><code>p</code></td><td>Todos los párrafos.</td></tr>
+            <tr><td>Clase</td><td><code>.special</code></td><td>Todos los elementos con esa clase (reutilizable).</td></tr>
+            <tr><td>ID</td><td><code>#menu</code></td><td>El único elemento con ese id.</td></tr>
+            <tr><td>Lista</td><td><code>p, li</code></td><td>Los dos a la vez (separados por comas).</td></tr>
+            <tr><td>Descendente</td><td><code>li em</code></td><td>Los <code>em</code> que estén <b>dentro</b> de un <code>li</code> (un espacio entre medias).</td></tr>
+            <tr><td>Hermano adyacente</td><td><code>h1 + p</code></td><td>Un <code>p</code> que vaya <b>justo después</b> de un <code>h1</code>.</td></tr>
+            <tr><td>Estado</td><td><code>a:hover</code></td><td>Elementos en un estado concreto (visited, hover, focus, active).</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-bottom:0;">Los estilos del navegador (los títulos en negrita, las viñetas…) son su <b>hoja de estilo
+      interna</b>: tu CSS las <b>redefine</b>. CSS externo con <code>&lt;link rel="stylesheet" href="styles.css"&gt;</code> es la forma recomendada de aplicarlo (también existe CSS interno con <code>&lt;style&gt;</code> e inline, pero úsalos puntualmente).</p>
+    </section>
+
+    <section class="section">
+      <h2 class="box-title alt2">📦 El modelo de caja</h2>
+      <p>Dos tipos de caja: <b>en bloque</b> (<code>&lt;p&gt;</code>, <code>&lt;h1&gt;</code>…) ocupa todo el ancho y fuerza salto de línea;
+      <b>en línea</b> (<code>&lt;a&gt;</code>, <code>&lt;span&gt;</code>…) fluye dentro del texto e <b>ignora</b> <code>width</code>/<code>height</code>.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Capa</th><th>Propiedad</th><th>Claves</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Contenido</td><td><code>width</code> / <code>height</code></td><td>El contenido en sí.</td></tr>
+            <tr><td>Relleno</td><td><code>padding</code></td><td>Espacio interior entre contenido y borde. Nunca negativo.</td></tr>
+            <tr><td>Borde</td><td><code>border</code></td><td><code>border: 3px solid black;</code> (ancho estilo color). Hay versiones por lado.</td></tr>
+            <tr><td>Margen</td><td><code>margin</code></td><td>Espacio exterior. Sí admite valores negativos (superposición).</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout note">
+        <p class="callout-title">📌 Estándar vs alternativo (esto te ahorra dolores de cabeza)</p>
+        <ul>
+          <li><b>Modelo estándar</b> (el de fábrica): <code>width</code> mide <b>solo el contenido</b>. La caja real = width + padding + border. Una caja de <code>width: 350px; padding: 25px; border: 5px;</code> ocupa en realidad <b>410px</b>.</li>
+          <li><b>Modelo alternativo</b>: <code>box-sizing: border-box;</code> → <code>width</code> incluye contenido + padding + borde. Lo que declares, eso ocupa.</li>
+          <li>Para que lo use todo el proyecto:
+          <code>html { box-sizing: border-box; } *, *::before, *::after { box-sizing: inherit; }</code></li>
+        </ul>
+      </div>
+      <div class="callout tip">
+        <p class="callout-title">✔ Colapso de márgenes</p>
+        <p style="margin:0;">Si dos márgenes verticales se tocan, <b>no se suman</b>: gana el mayor. Un párrafo con
+        <code>margin-bottom: 50px</code> seguido de otro con <code>margin-top: 30px</code> → separación de <b>50px</b>, no 80.
+        Si das margen y "no pasa nada", sospecha del colapso. (Y para ver las cajas reales: inspector del navegador, F12.)</p>
+      </div>
+      <p><b><code>display: inline-block</code></b>: punto medio. No fuerza salto de línea, pero respeta <code>width</code>/<code>height</code>
+      y el padding empuja a los demás. Muy usado en botones y enlaces con área de clic grande.</p>
+    </section>
+
+    <section class="section">
+      <h2 class="box-title alt3">🌊 Floats: el texto envuelve la imagen</h2>
+      <p><code>float: left | right</code> saca el elemento del flujo normal y lo pega a un lado: el contenido siguiente <b>lo envuelve</b>.
+      Nació para maquetar imágenes dentro de columnas de texto (diseño de periódico). Usarlo para columnas enteras es una
+      <b>técnica anticuada</b> (hoy flexbox/grid), pero debes conocerlo porque aún aparece y porque la actividad lo usa.</p>
+      <div class="callout note">
+        <p class="callout-title">📌 Los dos problemas clásicos y sus soluciones</p>
+        <ul>
+          <li><b>Elemento siguiente sube</b> junto al float → <code>clear: left | right | both;</code> en ese elemento.</li>
+          <li><b>El contenedor "no envuelve"</b> el float (el fondo queda cortado): tres remedios —
+          el truco <b>clearfix</b> (<code>.wrapper::after { content: ""; clear: both; display: block; }</code>),
+          <code>overflow: auto</code> en el contenedor, o lo moderno: <code>display: flow-root</code>.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="box-title">📍 position: sacar elementos del flujo</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Valor</th><th>Se posiciona respecto a…</th><th>¿Saca del flujo?</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>static</code></td><td>— (el flujo normal; es el valor por defecto)</td><td>No. <code>top/right/bottom/left</code> no tienen efecto.</td></tr>
+            <tr><td><code>relative</code></td><td><b>A sí mismo</b> (su posición original)</td><td>No: deja su hueco; solo se desplaza visualmente.</td></tr>
+            <tr><td><code>absolute</code></td><td>Al <b>ancestro posicionado más cercano</b> (si no hay, al bloque inicial = la página)</td><td><b>Sí</b>: los demás actúan como si no existiera.</td></tr>
+            <tr><td><code>fixed</code></td><td>Al <b>viewport</b> (la ventana): se queda fijo al hacer scroll</td><td><b>Sí</b>.</td></tr>
+            <tr><td><code>sticky</code></td><td>Híbrido: relativo hasta cruzar el umbral (<code>top: 0</code>…), luego fijo dentro de su contenedor</td><td>No.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout tip">
+        <p class="callout-title">✔ z-index y detalles de examen</p>
+        <p style="margin:0;"><code>z-index</code> controla qué elemento se dibuja encima (solo funciona en elementos posicionados).
+        Con <code>absolute</code>, si defines <code>top</code> y <code>bottom</code>, gana <code>top</code>. Con <code>sticky</code> debes darle
+        al menos un umbral (<code>top</code>, <code>left</code>…) o se comportará como <code>relative</code>. Un ancestro con
+        <code>transform</code> se convierte en el contenedor de referencia de un <code>fixed</code>.</p>
+      </div>
+      <div class="callout horror">
+        <p class="callout-title">⚠ Museo de horrores</p>
+        <ul>
+          <li>Maquetar columnas enteras con floats en 2026: para eso están <code>flex</code> y <code>grid</code>.</li>
+          <li><code>position: absolute</code> para <b>todo</b>: es imposible de mantener; el flujo normal existe por algo.</li>
+          <li>Poner <code>width</code> a un elemento <code>inline</code> y quejarse de que no funciona.</li>
+          <li>Olvidar el <code>clear</code> y luego el "por qué este div está subido" te vuelve loco 20 minutos.</li>
+          <li>Pelearse con los márgenes sin saber que <b>colapsan</b>.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="box-title alt2">🧠 Auto-test rápido</h2>
+      <p>Pulsa cada pregunta para ver la respuesta.</p>
+
+      <details class="q">
+        <summary>1. ¿Qué diferencia hay entre el modelo de caja estándar y el alternativo?</summary>
+        <div class="a"><div class="a-box">Estándar: <code>width</code> mide <b>solo el contenido</b> (padding y border se suman). Alternativo (<code>box-sizing: border-box</code>): <code>width</code> incluye contenido + padding + borde.</div></div>
+      </details>
+
+      <details class="q">
+        <summary>2. ¿Qué código hace que TODOS los elementos usen el modelo de caja alternativo?</summary>
+        <div class="a"><div class="a-box"><code>html { box-sizing: border-box; }</code> y <code>*, *::before, *::after { box-sizing: inherit; }</code> (heredado para todo el documento).</div></div>
+      </details>
+
+      <details class="q">
+        <summary>3. ¿Qué es el colapso de márgenes?</summary>
+        <div class="a"><div class="a-box">Cuando dos márgenes verticales se tocan, se fusionan y <b>gana el mayor</b>, no se suman. 50px + 30px = 50px de separación.</div></div>
+      </details>
+
+      <details class="q">
+        <summary>4. Diferencia práctica entre display: block e display: inline.</summary>
+        <div class="a"><div class="a-box">Bloque: ocupa todo el ancho, fuerza salto de línea y respeta width/height. En línea: fluye dentro del texto, sin salto de línea, e <b>ignora</b> width/height.</div></div>
+      </details>
+
+      <details class="q">
+        <summary>5. ¿Para qué sirve la propiedad clear y qué valores admite?</summary>
+        <div class="a"><div class="a-box">Evita que un elemento suba junto a un float. Valores: <code>left</code>, <code>right</code> y <code>both</code>.</div></div>
+      </details>
+
+      <details class="q">
+        <summary>6. Cita tres formas de conseguir que un contenedor envuelva (contenga) a sus elementos flotados.</summary>
+        <div class="a"><div class="a-box">1) El truco <b>clearfix</b> (<code>::after { content: ""; clear: both; display: block; }</code>), 2) <code>overflow: auto</code> en el contenedor, y 3) la forma moderna: <code>display: flow-root</code>.</div></div>
+      </details>
+
+      <details class="q">
+        <summary>7. ¿Respecto a qué se posiciona un elemento con position: absolute?</summary>
+        <div class="a"><div class="a-box">Respecto a su <b>ancestro posicionado más cercano</b> (un ancestro con position distinto de static). Si no existe ninguno, respecto al bloque contenedor inicial (la página/viewport).</div></div>
+      </details>
+
+      <details class="q">
+        <summary>8. Diferencia entre position: fixed y position: sticky.</summary>
+        <div class="a"><div class="a-box"><code>fixed</code> se fija <b>siempre</b> respecto al viewport (se queda en pantalla al hacer scroll). <code>sticky</code> es un híbrido: fluye como relativo hasta cruzar el umbral indicado (<code>top: 0</code>), entonces se pega, y solo dentro de su contenedor padre.</div></div>
+      </details>
+
+      <details class="q">
+        <summary>9. ¿Qué selecciona "li em" y qué selecciona "h1 + p"?</summary>
+        <div class="a"><div class="a-box"><code>li em</code> → todos los <code>em</code> <b>dentro</b> de un <code>li</code> (descendiente). <code>h1 + p</code> → un <code>p</code> que sea <b>hermano inmediato</b> de un <code>h1</code> (justo después).</div></div>
+      </details>
+    </section>
+
+    <div class="dominado-bar">
+      <button class="btn btn-dominado" data-dominar="tema-05"><span>✔ Marcar tema como dominado</span></button>
+    </div>
+
+  </main>
+
+  <footer>
+    <p class="big">★ Hecho con estándares web ★</p>
+    <p>Resúmenes escritos con nuestras palabras para repasar en clase.</p>
+    <p>HTML + CSS + un poquito de JS · Sin frameworks, como manda el temario.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
