@@ -1,4 +1,4 @@
-/* Fondo 3D del hero de portada — WebGL con Three.js */
+/* Fondo 3D del hero de portada — cintas onduladas con WebGL (Three.js) */
 
 (() => {
   const contenedor = document.querySelector("[data-hero-3d]");
@@ -26,70 +26,112 @@
   renderer.setSize(ancho, alto);
   contenedor.appendChild(renderer.domElement);
 
-  escena.add(new THREE.HemisphereLight(0xffffff, 0x333344, 1.1));
-  const sol = new THREE.DirectionalLight(0xffffff, 0.6);
-  sol.position.set(3, 4, 5);
+  escena.add(new THREE.HemisphereLight(0xffffff, 0x333344, 1.2));
+  const sol = new THREE.DirectionalLight(0xffffff, 0.7);
+  sol.position.set(3, 5, 6);
   escena.add(sol);
 
-  const paleta = [0xffe156, 0xff90e8, 0xb9ff66, 0x9be7ff, 0xd9b8ff, 0xffc97d, 0xff8a8a];
-  const geometrias = [
-    new THREE.IcosahedronGeometry(1, 0),
-    new THREE.BoxGeometry(1.5, 1.5, 1.5),
-    new THREE.OctahedronGeometry(1.15, 0),
-    new THREE.TorusGeometry(0.9, 0.32, 8, 16),
-  ];
-
+  const paleta = [0xff90e8, 0x9be7ff, 0xffe156, 0xb9ff66, 0xd9b8ff, 0xffc97d, 0xff8a8a];
   const grupo = new THREE.Group();
-  const figuras = [];
-  const totalFiguras = 10;
+  const cintas = [];
+  const totalCintas = 9;
+  const segmentos = 64;
+  const anchoOnda = 28;
 
-  for (let i = 0; i < totalFiguras; i++) {
-    const geometria = geometrias[i % geometrias.length];
+  const crearGeometriaCinta = () => {
+    const posiciones = new Float32Array((segmentos + 1) * 2 * 3);
+    const indices = [];
+    for (let i = 0; i < segmentos; i++) {
+      const a = i * 2;
+      const b = a + 1;
+      const c = a + 2;
+      const d = a + 3;
+      indices.push(a, b, c, b, d, c);
+    }
+    const geometria = new THREE.BufferGeometry();
+    geometria.setAttribute("position", new THREE.BufferAttribute(posiciones, 3));
+    geometria.setAttribute("normal", new THREE.BufferAttribute(new Float32Array(posiciones.length), 3));
+    geometria.setIndex(indices);
+    return geometria;
+  };
+
+  for (let i = 0; i < totalCintas; i++) {
+    const geometria = crearGeometriaCinta();
     const color = paleta[i % paleta.length];
-    const material = new THREE.MeshStandardMaterial({ color, flatShading: true });
+    const material = new THREE.MeshStandardMaterial({
+      color,
+      roughness: 0.4,
+      metalness: 0.08,
+      emissive: color,
+      emissiveIntensity: 0.08,
+      side: THREE.DoubleSide,
+      transparent: true,
+      opacity: 0.95,
+    });
+
     const malla = new THREE.Mesh(geometria, material);
+    malla.frustumCulled = false;
 
-    const contorno = new THREE.LineSegments(
-      new THREE.EdgesGeometry(geometria),
-      new THREE.LineBasicMaterial({ color: 0x141414 })
-    );
-    malla.add(contorno);
-
-    const escala = 0.6 + Math.random() * 0.8;
-    malla.scale.setScalar(escala);
-    malla.position.set(
-      (Math.random() - 0.5) * 13,
-      (Math.random() - 0.5) * 7,
-      (Math.random() - 0.5) * 6 - 1
-    );
-    malla.rotation.set(Math.random() * Math.PI, Math.random() * Math.PI, 0);
-
-    malla.userData.giro = {
-      x: (Math.random() - 0.5) * 0.012,
-      y: (Math.random() - 0.5) * 0.012,
+    const parametros = {
+      grosor: 0.045 + Math.random() * 0.035,
+      ampY: 0.45 + Math.random() * 0.55,
+      freqY: 0.14 + Math.random() * 0.12,
+      faseY: Math.random() * Math.PI * 2,
+      ampZ: 0.3 + Math.random() * 0.35,
+      freqZ: 0.09 + Math.random() * 0.08,
+      faseZ: Math.random() * Math.PI * 2,
+      velocidad: 0.12 + Math.random() * 0.12,
+      baseY: (i - (totalCintas - 1) / 2) * 0.75 + (Math.random() - 0.5) * 0.3,
+      baseZ: -2.8 + Math.random() * 3.2,
     };
 
     grupo.add(malla);
-    figuras.push(malla);
+    cintas.push({ geometria, parametros });
   }
 
   escena.add(grupo);
+
+  const actualizarCinta = (cinta, tiempo) => {
+    const { geometria, parametros } = cinta;
+    const pos = geometria.attributes.position.array;
+    const { grosor, ampY, freqY, faseY, ampZ, freqZ, faseZ, velocidad, baseY, baseZ } = parametros;
+
+    for (let i = 0; i <= segmentos; i++) {
+      const t = i / segmentos;
+      const x = -anchoOnda / 2 + anchoOnda * t;
+      const y = baseY + ampY * Math.sin(x * freqY + tiempo * velocidad + faseY);
+      const z = baseZ + ampZ * Math.sin(x * freqZ + tiempo * velocidad * 0.7 + faseZ);
+
+      const iTop = i * 2 * 3;
+      const iBase = iTop + 3;
+
+      pos[iTop] = x;
+      pos[iTop + 1] = y + grosor;
+      pos[iTop + 2] = z;
+
+      pos[iBase] = x;
+      pos[iBase + 1] = y - grosor;
+      pos[iBase + 2] = z;
+    }
+
+    geometria.attributes.position.needsUpdate = true;
+    geometria.computeVertexNormals();
+  };
 
   let objetivoX = 0;
   let objetivoY = 0;
 
   window.addEventListener("pointermove", (evento) => {
-    objetivoX = (evento.clientX / window.innerWidth - 0.5) * 0.5;
-    objetivoY = (evento.clientY / window.innerHeight - 0.5) * 0.3;
+    objetivoX = (evento.clientX / window.innerWidth - 0.5) * 0.35;
+    objetivoY = (evento.clientY / window.innerHeight - 0.5) * 0.2;
   });
 
   let idAnimacion = null;
+  const reloj = new THREE.Clock();
 
   const animar = () => {
-    figuras.forEach((malla) => {
-      malla.rotation.x += malla.userData.giro.x;
-      malla.rotation.y += malla.userData.giro.y;
-    });
+    const tiempo = reloj.getElapsedTime();
+    cintas.forEach((cinta) => actualizarCinta(cinta, tiempo));
     grupo.rotation.y += (objetivoX - grupo.rotation.y) * 0.04;
     grupo.rotation.x += (-objetivoY - grupo.rotation.x) * 0.04;
     renderer.render(escena, camara);
