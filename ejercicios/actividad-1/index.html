@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<!-- ============================================================
+     ACTIVIDAD 1 · Fundamentos del lenguaje HTML
+     Home de Domestika reconstruida como ejercicio de clase
+     Profesor: Felip Soriano · CP Confección web Coliseum 9/2026
+
+     CÓMO ESTÁ ORGANIZADO ESTE ARCHIVO (léelo en este orden):
+     1. <head>  → la ficha técnica: charset, título y los estilos
+     2. <body>  → el contenido, dividido en <div class="seccion">
+                  (una caja por parte de la página, como dibujamos
+                  en el plan de ataque: cabecera, menú, destacado,
+                  cursos, ventajas y pie)
+     3. Cada <div> lleva UN borde y UN color de fondo distintos:
+        es lo que pide el ejercicio para diferenciar las secciones.
+     ============================================================ -->
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Cursos online para creativos | Domestika</title>
+
+  <!-- FUENTE 2 (la de Google Fonts): "Nunito" para títulos.
+       Se copia de fonts.google.com y se pega aquí tal cual. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <!-- Los estilos van aquí dentro (<style>) para que el ejercicio
+       sea UN SOLO archivo, como pide la entrega ("index.html").
+       En proyectos reales los pondríamos en un styles.css aparte. -->
+  <style>
+    /* FUENTE 1 (la del sistema, instalada en tu ordenador):
+       Arial/Helvetica va en todo el cuerpo de la página. */
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      background-color: #FFFBEF;
+      color: #141414;
+    }
+
+    /* Regla MÁGICA del modelo de caja: así width incluye el
+       padding y el borde y las cajas miden lo que parece (tema 05). */
+    * { box-sizing: border-box; }
+
+    /* Estilo común a TODAS las secciones: cada <div class="seccion">
+       es una caja con su propio borde y color de fondo. */
+    .seccion {
+      border: 3px solid #141414;   /* lo que pide el ejercicio: border */
+      margin: 20px;                /* separación entre cajas */
+      padding: 20px;               /* aire interior para que no pegue al borde */
+      border-radius: 12px;
+    }
+
+    /* Títulos: usan la fuente de Google Fonts. */
+    h1, h2, h3 { font-family: "Nunito", Arial, sans-serif; margin-top: 0; }
+
+    /* Color de fondo DIFERENTE por sección (también lo pide el ejercicio) */
+    #cabecera   { background-color: #FFE156; text-align: center; }
+    #menu       { background-color: #FF90E8; }
+    #destacado  { background-color: #9BE7FF; }
+    #vendidos   { background-color: #FFC97D; }
+    #categorias { background-color: #B9FF66; }
+    #ventajas   { background-color: #D9B8FF; }
+    #pie        { background-color: #141414; color: #FFFBEF; text-align: center; }
+
+    /* Pequeños retoques de legibilidad ("un libro para pantalla") */
+    img { max-width: 100%; border: 3px solid #141414; border-radius: 8px; display: block; margin: 12px 0; }
+    #menu ul { margin: 0; padding-left: 20px; }
+    #pie a { color: #FFE156; }
+    .curso { margin-bottom: 20px; }
+  </style>
+</head>
+
+<body>
+
+  <!-- SECCIÓN 1: CABECERA = la "portada de la revista".
+       Un solo <h1> en toda la página (regla de oro). -->
+  <div class="seccion" id="cabecera">
+    <h1>Domestika</h1>
+    <p><em>La mayor comunidad creativa del mundo hispanohablante</em></p>
+  </div>
+
+  <!-- SECCIÓN 2: MENÚ = el "índice de la revista".
+       Lista SIN orden (<ul>) porque da igual en qué orden la leas. -->
+  <div class="seccion" id="menu">
+    <ul>
+      <li><a href="#categorias">Cursos</a></li>
+      <li><a href="#vendidos">Más vendidos</a></li>
+      <li><a href="#ventajas">Por qué nosotros</a></li>
+      <li><a href="#pie">Contacto</a></li>
+    </ul>
+  </div>
+
+  <!-- SECCIÓN 3: DESTACADO = el titular grande de portada.
+       La imagen es un SVG "dibujado" en código: así el ejercicio
+       cabe en un solo archivo. El texto del alt describe la foto. -->
+  <div class="seccion" id="destacado">
+    <h2>Aprende con los mejores profesionales</h2>
+    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='300'%3E%3Crect width='800' height='300' fill='%23FF90E8'/%3E%3Ctext x='400' y='165' font-family='Arial' font-size='34' text-anchor='middle' fill='%23141414'%3EIlustracion creativa%3C/text%3E%3C/svg%3E"
+         alt="Cartel promocional con los colores de Domestika y el lema Ilustración creativa" width="800" height="300">
+    <p>Descubre cursos de ilustración, diseño, fotografía y mucho más.
+       Aprende <em>a tu ritmo</em>, desde cero y con proyectos reales.</p>
+    <p><a href="#categorias">→ Explora los cursos</a></p>
+  </div>
+
+  <!-- SECCIÓN 4: LOS MÁS VENDIDOS = un RANKING.
+       Lista CON orden (<ol>) porque el puesto 1 no es el puesto 3. -->
+  <div class="seccion" id="vendidos">
+    <h2>Los cursos más vendidos</h2>
+    <ol>
+      <li><strong>Ilustración digital desde cero</strong> — aprende a dibujar con tableta gráfica.</li>
+      <li><strong>Fotografía para Instagram</strong> — saca el máximo partido a tu móvil.</li>
+      <li><strong>Introducción a Adobe Photoshop</strong> — retoque profesional paso a paso.</li>
+    </ol>
+  </div>
+
+  <!-- SECCIÓN 5: CATEGORÍAS = el escaparate.
+       Tres <h3> (tercer nivel de título pedido en el enunciado),
+       cada uno con su imagen, su párrafo y su enlace. -->
+  <div class="seccion" id="categorias">
+    <h2>Explora por categoría</h2>
+
+    <div class="curso">
+      <h3>Ilustración</h3>
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200'%3E%3Crect width='400' height='200' fill='%23FFE156'/%3E%3Ctext x='200' y='115' font-family='Arial' font-size='26' text-anchor='middle' fill='%23141414'%3EIlustracion%3C/text%3E%3C/svg%3E"
+           alt="Miniatura de color amarillo que representa la categoría de cursos de Ilustración" width="400" height="200">
+      <p>Técnicas tradicionales y digitales para contar historias con dibujos.</p>
+      <a href="#">Ver los cursos de Ilustración</a>
+    </div>
+
+    <div class="curso">
+      <h3>Fotografía</h3>
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200'%3E%3Crect width='400' height='200' fill='%239BE7FF'/%3E%3Ctext x='200' y='115' font-family='Arial' font-size='26' text-anchor='middle' fill='%23141414'%3EFotografia%3C/text%3E%3C/svg%3E"
+           alt="Miniatura de color azul que representa la categoría de cursos de Fotografía" width="400" height="200">
+      <p>Domina la luz, la composición y el revelado digital.</p>
+      <a href="#">Ver los cursos de Fotografía</a>
+    </div>
+
+    <div class="curso">
+      <h3>Diseño</h3>
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200'%3E%3Crect width='400' height='200' fill='%23FFC97D'/%3E%3Ctext x='200' y='115' font-family='Arial' font-size='26' text-anchor='middle' fill='%23141414'%3EDiseno%3C/text%3E%3C/svg%3E"
+           alt="Miniatura de color naranja que representa la categoría de cursos de Diseño" width="400" height="200">
+      <p>De la idea al arte final: branding, editorial y diseño web.</p>
+      <a href="#">Ver los cursos de Diseño</a>
+    </div>
+  </div>
+
+  <!-- SECCIÓN 6: VENTAJAS = argumentos, con <strong> para lo importante. -->
+  <div class="seccion" id="ventajas">
+    <h2>Por qué aprender en Domestika</h2>
+    <ul>
+      <li><strong>Profesores de verdad:</strong> profesionales que trabajan en la industria.</li>
+      <li><strong>A tu ritmo:</strong> los cursos son tuyos para siempre, sin prisas.</li>
+      <li><strong>Proyecto final:</strong> cada curso acaba con un trabajo para tu portfolio.</li>
+      <li><strong>Comunidad:</strong> comparte tus avances y recibe feedback.</li>
+    </ul>
+  </div>
+
+  <!-- SECCIÓN 7: PIE = la parte de abajo con la letra pequeña. -->
+  <div class="seccion" id="pie">
+    <p>© 2026 · Ejercicio de clase del CP Confección web Coliseum</p>
+    <p><a href="#">Aviso legal</a> · <a href="#">Política de cookies</a></p>
+  </div>
+
+</body>
+</html>

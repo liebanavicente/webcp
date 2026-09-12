@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<!-- ============================================================
+     ACTIVIDAD 2 · Formateo de texto avanzado + Layout (I)
+     Blog de Domestika reconstruido como ejercicio de clase
+     Profesor: Felip Soriano · CP Confección web Coliseum 9/2026
+
+     Qué AÑADE esta actividad respecto a la primera:
+     · margin y padding en las secciones (aquí sí entran)
+     · Citas: <blockquote> (larga) y <q> (corta, en línea)
+     · <dl> + <dt> + <dd>  → lista de descripciones (glosario)
+     · <abbr title="...">  → abreviaturas explicadas
+     · <address>           → datos de contacto del sitio
+     · <time datetime="…"> → fechas que entiende una máquina
+     ============================================================ -->
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>El blog de Domestika | Ejercicio de clase</title>
+
+  <!-- Mismas dos fuentes que en la actividad 1:
+       Nunito (Google Fonts) para títulos + Arial del sistema para el texto -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;   /* fuente del sistema */
+      margin: 0;
+      background-color: #FFFBEF;
+      color: #141414;
+    }
+    * { box-sizing: border-box; }
+
+    h1, h2, h3 { font-family: "Nunito", Arial, sans-serif; margin-top: 0; }
+
+    /* Secciones: aquí SÍ usamos margin y padding de verdad,
+       además del border y el background-color de la actividad 1. */
+    .seccion {
+      border: 3px solid #141414;
+      margin: 24px;              /* espacio FUERA de la caja (hasta el vecino) */
+      padding: 24px;             /* espacio DENTRO de la caja (hasta el texto) */
+      border-radius: 12px;
+    }
+
+    #cabecera  { background-color: #FFE156; text-align: center; }
+    #menu      { background-color: #FF90E8; }
+    #entrada   { background-color: #9BE7FF; }
+    #entradas  { background-color: #FFC97D; }
+    #cita      { background-color: #D9B8FF; }
+    #glosario  { background-color: #B9FF66; }
+    #pie       { background-color: #141414; color: #FFFBEF; }
+
+    img { max-width: 100%; border: 3px solid #141414; border-radius: 8px; display: block; margin: 12px 0; }
+    ul, ol { padding-left: 22px; }
+    #menu ul { margin: 0; }
+    #pie a { color: #FFE156; }
+    .post { margin-bottom: 26px; }
+
+    /* Pequeño estilo para la cita en bloque: se distingue del resto */
+    blockquote {
+      margin: 12px 0;
+      padding: 16px 20px;
+      background-color: #FFFBEF;
+      border-left: 10px solid #141414;
+      border-radius: 0 10px 10px 0;
+    }
+    blockquote p { margin: 0; font-style: italic; }
+  </style>
+</head>
+
+<body>
+
+  <!-- CABECERA: un solo <h1> (el nombre del blog) -->
+  <div class="seccion" id="cabecera">
+    <h1>El blog de Domestika</h1>
+    <p><em>Ideas, entrevistas y trucos para creativos</em></p>
+  </div>
+
+  <!-- MENÚ de navegación principal -->
+  <div class="seccion" id="menu">
+    <ul>
+      <li><a href="#entrada">Entrada destacada</a></li>
+      <li><a href="#entradas">Últimas entradas</a></li>
+      <li><a href="#glosario">Glosario</a></li>
+      <li><a href="#pie">Contacto</a></li>
+    </ul>
+  </div>
+
+  <!-- ENTRADA DESTACADA del blog.
+       Fíjate en las DOS etiquetas nuevas aquí:
+       · <time datetime="…"> → la fecha se ve bonita (12 sep 2026)
+         pero la máquina la lee en formato ISO (2026-09-12)
+       · <q> dentro del párrafo → cita corta EN LÍNEA (pone las comillas sola) -->
+  <div class="seccion" id="entrada">
+    <h2>Entrada destacada</h2>
+    <h3>Diez consejos para empezar en ilustración digital</h3>
+    <p>Publicado el <time datetime="2026-09-12">12 de septiembre de 2026</time> por el equipo del blog</p>
+    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='300'%3E%3Crect width='800' height='300' fill='%239BE7FF'/%3E%3Ctext x='400' y='165' font-family='Arial' font-size='32' text-anchor='middle' fill='%23141414'%3EBlog: Ilustracion digital%3C/text%3E%3C/svg%3E"
+         alt="Imagen de cabecera de la entrada del blog sobre ilustración digital" width="800" height="300">
+    <p>Empezar en la ilustración digital puede asustar: tableta, programas, pinceles…
+       Pero como nos recordaba una ilustradora en una entrevista: <q>el material importa menos
+       que el hábito de dibujar cada día</q>. Por eso este artículo se centra en la constancia.</p>
+    <p>El <strong>primer consejo</strong> es elegir UN solo programa y aprenderlo bien antes de saltar a otro.</p>
+    <p><a href="#">Leer la entrada completa</a></p>
+  </div>
+
+  <!-- ÚLTIMAS ENTRADAS: cada post lleva su <h3>, su <time> y su enlace.
+       La lista de "lecturas recomendadas" usa <ol> porque el orden importa. -->
+  <div class="seccion" id="entradas">
+    <h2>Últimas entradas</h2>
+
+    <div class="post">
+      <h3>Cómo organizar tu portfolio creativo</h3>
+      <p><time datetime="2026-09-05">5 de septiembre de 2026</time></p>
+      <p>Menos proyectos y mejor explicados: tu portfolio no es un almacén, es una vitrina.</p>
+      <a href="#">Leer más</a>
+    </div>
+
+    <div class="post">
+      <h3>Fotografía de producto con luz natural</h3>
+      <p><time datetime="2026-08-28">28 de agosto de 2026</time></p>
+      <p>Una ventana, un cartulina blanca y paciencia: los tres ingredientes del bodegón casero.</p>
+      <a href="#">Leer más</a>
+    </div>
+
+    <h3>Lecturas recomendadas de la semana</h3>
+    <ol>
+      <li>Guía básica de tipografía para no diseñadores</li>
+      <li>Cinco errores al empezar con Photoshop</li>
+      <li>Cómo dar y recibir feedback creativo</li>
+    </ol>
+  </div>
+
+  <!-- CITA DESTACADA: <blockquote> es para citas LARGAS que merecen
+       su propio bloque (va con un <p> dentro y, si quieres, <cite>) -->
+  <div class="seccion" id="cita">
+    <h2>Cita de la comunidad</h2>
+    <blockquote>
+      <p>"No busques el dibujo perfecto: busca el dibujo terminado. Un dibujo acabado
+      siempre enseña más que uno perfecto a medias."</p>
+    </blockquote>
+    <p>— Entrevista a una ilustradora veterana, publicada en este blog.</p>
+  </div>
+
+  <!-- GLOSARIO: aquí brilla <dl> (lista de descripciones):
+       cada <dt> es el término y su <dd> la definición.
+       Aprovechamos para usar <abbr> con una sigla conocida. -->
+  <div class="seccion" id="glosario">
+    <h2>Glosario creativo</h2>
+    <dl>
+      <dt>Portfolio</dt>
+      <dd>Selección de tus mejores trabajos, pensada para enseñar lo que sabes hacer.</dd>
+
+      <dt>Sketch</dt>
+      <dd>Boceto rápido que captura la idea antes de pulir los detalles.</dd>
+
+      <dt><abbr title="Search Engine Optimization">SEO</abbr></dt>
+      <dd>Conjunto de técnicas para que tu web aparezca mejor posicionada en los buscadores.</dd>
+    </dl>
+  </div>
+
+  <!-- PIE: los datos de contacto van dentro de <address>.
+       Ojo: <address> no es para cualquier dirección postal:
+       es la información de contacto del AUTOR o del sitio. -->
+  <div class="seccion" id="pie">
+    <address>
+      <p>Ejercicio de clase del CP Confección web Coliseum ·<br>
+         Escríbenos: <a href="mailto:blog@ejemplo.com">blog@ejemplo.com</a></p>
+    </address>
+    <p>© 2026 · <a href="#">Aviso legal</a></p>
+  </div>
+
+</body>
+</html>

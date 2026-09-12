@@ -84,6 +84,30 @@
     </section>
 
     <section class="section">
+      <h2 class="box-title alt2">🎁 El regalo, en directo</h2>
+      <p style="text-align:center;">Pulsa cada capa para resaltarla en el dibujo. Así se ve el modelo de caja por dentro:</p>
+      <div class="botones-capa">
+        <button class="btn small" data-capa="margin">Margin</button>
+        <button class="btn small" data-capa="border">Border</button>
+        <button class="btn small" data-capa="padding">Padding</button>
+        <button class="btn small" data-capa="content">Contenido</button>
+      </div>
+      <div class="diagrama-caja">
+        <div class="capa capa-margin" data-capa-caja="margin">
+          <p class="etiqueta-capa">margin (espacio fuera)</p>
+          <div class="capa capa-border" data-capa-caja="border">
+            <p class="etiqueta-capa">border (la caja)</p>
+            <div class="capa capa-padding" data-capa-caja="padding">
+              <p class="etiqueta-capa">padding (espacio dentro)</p>
+              <div class="capa-contenido" data-capa-caja="content">🧸 Contenido<br>(width × height)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="task-counter" style="text-align:center;">Capa seleccionada: <b data-capa-nombre>ninguna</b></p>
+    </section>
+
+    <section class="section">
       <h2 class="box-title alt">🎯 Selectores: cómo apuntas a cada cosa</h2>
       <div class="table-wrap">
         <table>

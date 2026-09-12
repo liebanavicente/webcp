@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flashcards — Apuntes Web</title>
+  <meta name="description" content="Tarjetas de memoria para repasar etiquetas y propiedades de las fichas del CP.">
+  <meta name="theme-color" content="#FFE156">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>✳</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>★ Flashcards</span><span>★ Repaso rápido</span><span>★ 5 minutos al día</span><span>★ Sin mirar las respuestas</span>
+      <span>★ Flashcards</span><span>★ Repaso rápido</span><span>★ 5 minutos al día</span><span>★ Sin mirar las respuestas</span>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <a class="logo" href="index.html">✳ APUNTES.WEB</a>
+    <a class="btn small blue" href="index.html">← Volver a los temas</a>
+  </header>
+
+  <main class="container" data-memoria>
+
+    <section class="tema-hero">
+      <span class="tema-badge">Repaso</span>
+      <h1>Flashcards</h1>
+      <p class="fuente">📚 18 tarjetas sacadas de las fichas 01–05. Lee la pregunta, intenta responder <b>mentalmente
+      y sin mirar</b>, y luego gira la tarjeta para comprobar.</p>
+    </section>
+
+    <section class="section">
+      <h2 class="box-title alt2">🃏 El mazo</h2>
+
+      <div class="tarjeta-memoria" data-tarjeta title="Pulsa para girar">
+        <div class="tarjeta-interior">
+          <div class="cara cara-delante">
+            <span class="tema-cara" data-tema-cara>Tema 01</span>
+            <p class="pregunta-grande" data-pregunta>Cargando pregunta…</p>
+            <p style="margin:0; font-size:.85rem; font-weight:700;">👆 Pulsa la tarjeta para girarla</p>
+          </div>
+          <div class="cara cara-detras">
+            <span class="tema-cara">Respuesta</span>
+            <p class="respuesta-cara" data-respuesta></p>
+          </div>
+        </div>
+      </div>
+
+      <p class="contador-memoria" data-contador-memoria>Preparando el mazo…</p>
+
+      <div class="controles-memoria">
+        <button class="btn small pink" data-repasar>🔁 Repasar después</button>
+        <button class="btn small green" data-sabia>✔ La sabía</button>
+        <button class="btn small blue" data-barajar>🔀 Barajar de nuevo</button>
+      </div>
+
+      <div class="callout tip" style="margin-top:1.6rem;">
+        <p class="callout-title">✔ El truco</p>
+        <p style="margin:0;">Sé honesto: solo pulsa "La sabía" si has respondido <b>completa</b> antes de girar.
+        Las que repites vuelven al final del mazo, así las ves dos veces en la misma sesión. Eso es
+        exactamente cómo funciona la memoria: repetir lo que fallas, no lo que ya sabes.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p class="big">★ Hecho con estándares web ★</p>
+    <p>Resúmenes escritos con nuestras palabras para repasar en clase.</p>
+    <p>HTML + CSS + un poquito de JS · Sin frameworks, como manda el temario.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
