@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guía de actividades — Apuntes Web</title>
+  <meta name="description" content="Plan de ataque, checklists interactivos y trucos para resolver las actividades del CP sin sustos.">
+  <meta name="theme-color" content="#FFE156">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>✳</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>★ Guía de actividades</span><span>★ Plan de ataque</span><span>★ Checklists</span><span>★ Sin sustos</span>
+      <span>★ Guía de actividades</span><span>★ Plan de ataque</span><span>★ Checklists</span><span>★ Sin sustos</span>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <a class="logo" href="index.html">✳ APUNTES.WEB</a>
+    <a class="btn small blue" href="index.html">← Volver a los temas</a>
+  </header>
+
+  <main class="container">
+
+    <section class="tema-hero">
+      <span class="tema-badge">Guía</span>
+      <h1>Guía de actividades</h1>
+      <p class="fuente">📚 Basada en la Actividad 1 (home de Domestika) y la Actividad 2 (blog de Domestika) del classroom.</p>
+    </section>
+
+    <section class="section">
+      <h2 class="box-title">🤝 Cómo usar esta guía</h2>
+      <div class="callout idea" style="margin:0;">
+        <p style="margin:0;">Esta guía <b>no hace el trabajo por ti</b>: te dice el orden, te recuerda todo lo que hay que
+        incluir y te avisa de los errores que el profe detecta a la legua. La idea es que entregues algo tuyo y que
+        luego puedas rehacerlo en un examen con los ojos cerrados. Marca cada requisito conforme lo completes:
+        tu progreso se guarda en este navegador.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="box-title alt">🛒 Actividad 1 · Home de Domestika (index.html)</h2>
+
+      <p><b>Qué te piden, en cristiano:</b> una página que copie el <b>contenido</b> de la home de
+      <a href="https://www.domestika.org/es" target="_blank" rel="noopener">domestika.org/es ↗</a>, con las secciones
+      separadas en divs y diferenciadas solo con <code>border</code> y <code>background-color</code>, usando las etiquetas
+      del temario, dos fuentes y el validador como compañero de viaje.</p>
+
+      <h3 style="font-family:var(--font-display); text-transform:uppercase; font-size:1.05rem; margin:1.4rem 0 .6rem;">🗺️ Plan de ataque en 7 pasos</h3>
+      <ol>
+        <li><b>Mira y dibuja antes de tocar el teclado:</b> abre la home de Domestika y esboza en papel o Figma sus bloques (cabecera, menú, secciones de cursos, pie). No codifiques aún.</li>
+        <li><b>Crea el esqueleto</b> <code>index.html</code>: doctype, <code>html</code>, <code>head</code> (con <code>charset</code> y <code>title</code>) y <code>body</code>.</li>
+        <li><b>Un div por sección</b>, cada uno con su <code>class</code> (header, nav, main, footer…).</li>
+        <li><b>Transcribe el contenido real</b> de la home dentro de cada sección: títulos, párrafos, listas, imágenes, enlaces.</li>
+        <li><b>CSS básico:</b> un <code>border</code> y un <code>background-color</code> distinto por sección (así el profe ve las divisiones de un vistazo).</li>
+        <li><b>Fuentes:</b> una del sistema (p. ej. Arial o Georgia) para el texto y una de Google Fonts para los títulos.</li>
+        <li><b>Valida y corrige</b> en <a href="https://validator.w3.org/" target="_blank" rel="noopener">validator.w3.org ↗</a> hasta que no quede ni un error. Hazlo varias veces durante el proceso, no solo al final.</li>
+      </ol>
+
+      <h3 style="font-family:var(--font-display); text-transform:uppercase; font-size:1.05rem; margin:1.6rem 0 .6rem;">✅ Checklist de la entrega</h3>
+      <div class="progress" role="progressbar" aria-label="Progreso de la actividad 1"><div class="progress-fill" data-progreso="a1"></div></div>
+      <p class="task-counter"><span data-contador="a1">0/12</span> requisitos cumplidos</p>
+
+      <ul class="task-list" data-checklist="a1">
+        <li class="task-item"><label><input type="checkbox" value="a1-1"><span class="task-text"><b>Esqueleto HTML válido</b> (doctype, html, head, body)<span class="task-hint">💡 Si dudas, repasa el paso a paso del <a href="tema-02.html">tema 02</a>.</span></span></label></li>
+        <li class="task-item"><label><input type="checkbox" value="a1-2"><span class="task-text"><b>&lt;meta charset="utf-8"&gt;</b> y un &lt;title&gt; que describa la página<span class="task-hint">💡 <a href="tema-02.html">Tema 02</a>: el title es el "lomo del libro".</span></span></label></li>
+        <li class="task-item"><label><input type="checkbox" value="a1-3"><span class="task-text"><b>Contenido real de la home de Domestika</b> transcrito a mano<span class="task-hint">💡 No inventes textos: mira la web y copia lo esencial de cada sección.</span></span></label></li>
+        <li class="task-item"><label><input type="checkbox" value="a1-4"><span class="task-text"><b>Cada sección en su &lt;div class="…"&gt;</b> (header, nav, main, footer…)<span class="task-hint">💡 <a href="tema-03.html">Tema 03</a>: la revista de papel (portada, índice, artículo, pie).</span></span></label></li>
+        <li class="task-item"><label><input type="checkbox" value="a1-5"><span class="task-text"><b>Cada sección con border y background-color distintos</b><span class="task-hint">💡 <a href="tema-05.html">Tema 05</a>: el borde es la "caja de cartón" del regalo.</span></span></label></li>
+        <li class="task-item"><label><input type="checkbox" value="a1-6"><span class="task-text"><b>Encabezados h1, h2 y h3</b>, en orden y sin saltos<span class="task-hint">💡 Un solo h1 por página; nunca saltes de h2 a h4.</span></span></label></li>
+        <li class="task-item"><label><input type="checkbox" value="a1-7"><span class="task-text"><b>Párrafos con &lt;em&gt; y &lt;strong&gt;</b> donde el texto lo pida<span class="task-hint">💡 Uno para énfasis ("qué alivio"), otro para importancia ("¡no toques!").</span></span></label></li>
+        <li class="task-item"><label><input type="checkbox" value="a1-8"><span class="task-text"><b>Una &lt;ol&gt; y una &lt;ul&gt;</b> con sus &lt;li&gt;<span class="task-hint">💡 <a href="tema-02.html">Tema 02</a>: numerada si el orden importa (pasos), con viñetas si no (categorías).</span></span></label></li>
+        <li class="task-item"><label><input type="checkbox" value="a1-9"><span class="task-text"><b>Imágenes con src y alt</b><span class="task-hint">💡 <a href="tema-03.html">Tema 03</a>: el alt es describir la foto por teléfono.</span></span></label></li>
+        <li class="task-item"><label><input type="checkbox" value="a1-10"><span class="task-text"><b>Enlaces &lt;a href="…"&gt;</b> en el menú, cursos y pie<span class="task-hint">💡 Pueden apuntar a "#" si aún no tienes destino; lo importante es la etiqueta.</span></span></label></li>
+        <li class="task-item"><label><input type="checkbox" value="a1-11"><span class="task-text"><b>Dos familias de fuentes</b>: una del sistema + una de Google Fonts<span class="task-hint">💡 <a href="tema-04.html">Tema 04</a>, Google Fonts en 4 pasos: sistema en el body, Google en los títulos.</span></span></label></li>
+        <li class="task-item"><label><input type="checkbox" value="a1-12"><span class="task-text"><b>Validador W3C sin errores</b><span class="task-hint">💡 Pega tu código en validator.w3.org → "Validate by Direct Input" → Check.</span></span></label></li>
+      </ul>
+
+      <div class="callout horror">
+        <p class="callout-title">👀 Lo que el profe mirará primero</p>
+        <ul>
+          <li>Imágenes <b>sin alt</b> (error de accesibilidad, lo hemos dado mil veces).</li>
+          <li><b>Más de un h1</b> o saltos de nivel (h1 → h3).</li>
+          <li>Texto suelto fuera de párrafos, o listas sin <code>&lt;li&gt;</code>.</li>
+          <li>Solo un color de fondo para todo: la consigna es <b>diferenciar secciones</b>.</li>
+          <li>Validar solo al final y entregar con errores: valida <b>durante</b> el proceso.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="box-title alt2">📰 Actividad 2 · Blog de Domestika (blog.html)</h2>
+
+      <p><b>La misma película, nueva escena:</b> ahora el contenido es el blog de
+      <a href="https://www.domestika.org/es/blog" target="_blank" rel="noopener">domestika.org/es/blog ↗</a>, se añaden
+      <code>margin</code> y <code>padding</code> (ya no solo border) y aparecen etiquetas nuevas de "formateo avanzado".
+      Repite el mismo plan de ataque de la actividad 1 y consulta esta tabla cuando te salga una etiqueta nueva:</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Etiqueta</th><th>Para qué</th><th>Ejemplo mínimo</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>&lt;blockquote&gt;</code></td>
+              <td>Cita <b>larga</b>, en bloque con sangría (un párrafo entero de otra persona).</td>
+              <td><code>&lt;blockquote&gt;&lt;p&gt;"Frase célebre…"&lt;/p&gt;&lt;/blockquote&gt;</code></td>
+            </tr>
+            <tr>
+              <td><code>&lt;q&gt;</code></td>
+              <td>Cita <b>corta</b> dentro de un párrafo; pone las comillas sola.</td>
+              <td><code>&lt;p&gt;Como dijo el profe: &lt;q&gt;validad todo&lt;/q&gt;.&lt;/p&gt;</code></td>
+            </tr>
+            <tr>
+              <td><code>&lt;dl&gt; &lt;dt&gt; &lt;dd&gt;</code></td>
+              <td>Lista de <b>descripciones</b>: término (dt) + su definición (dd).</td>
+              <td><code>&lt;dl&gt;&lt;dt&gt;HTML&lt;/dt&gt;&lt;dd&gt;Lenguaje de marcado&lt;/dd&gt;&lt;/dl&gt;</code></td>
+            </tr>
+            <tr>
+              <td><code>&lt;abbr&gt;</code></td>
+              <td>Abreviatura; el <code>title</code> guarda el significado completo (tooltip).</td>
+              <td><code>&lt;abbr title="Cascading Style Sheets"&gt;CSS&lt;/abbr&gt;</code></td>
+            </tr>
+            <tr>
+              <td><code>&lt;address&gt;</code></td>
+              <td><b>Información de contacto</b> del autor/propietario del documento.</td>
+              <td><code>&lt;address&gt;Escríbenos: hola@ejemplo.com&lt;/address&gt;</code></td>
+            </tr>
+            <tr>
+              <td><code>&lt;time&gt;</code></td>
+              <td>Fechas y horas <b>legibles por máquina</b> (SEO y accesibilidad).</td>
+              <td><code>&lt;time datetime="2026-09-12"&gt;12 sep 2026&lt;/time&gt;</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 style="font-family:var(--font-display); text-transform:uppercase; font-size:1.05rem; margin:1.6rem 0 .6rem;">✅ Checklist de la entrega</h3>
+      <div class="progress" role="progressbar" aria-label="Progreso de la actividad 2"><div class="progress-fill" data-progreso="a2"></div></div>
+      <p class="task-counter"><span data-contador="a2">0/10</span> requisitos cumplidos</p>
+
+      <ul class="task-list" data-checklist="a2">
+        <li class="task-item"><label><input type="checkbox" value="a2-1"><span class="task-text"><b>Archivo blog.html</b> con todo lo ya exigido en la actividad 1<span class="task-hint">💡 Su checklist es el de arriba: esquéleto, etiquetas, fuentes, validación…</span></span></label></li>
+        <li class="task-item"><label><input type="checkbox" value="a2-2"><span class="task-text"><b>Contenido del blog de Domestika</b> (títulos, entradas, fechas)<span class="task-hint">💡 Fíjate en el blog real: cada entrada tiene título, fecha, imagen y enlace.</span></span></label></li>
+        <li class="task-item"><label><input type="checkbox" value="a2-3"><span class="task-text"><b>margin y padding</b> para separar secciones (además de border)<span class="task-hint">💡 <a href="tema-05.html">Tema 05</a>: papel de relleno (padding, dentro) y distancia con el vecino (margin, fuera).</span></span></label></li>
+        <li class="task-item"><label><input type="checkbox" value="a2-4"><span class="task-text"><b>Al menos una &lt;blockquote&gt;</b> (cita en bloque)<span class="task-hint">💡 Perfecta para un testimonio o frase destacada de una entrada.</span></span></label></li>
+        <li class="task-item"><label><input type="checkbox" value="a2-5"><span class="task-text"><b>Al menos una &lt;q&gt;</b> (cita en línea)<span class="task-hint">💡 Una mención corta dentro de un párrafo; no escribas las comillas a mano.</span></span></label></li>
+        <li class="task-item"><label><input type="checkbox" value="a2-6"><span class="task-text"><b>Una lista de descripciones &lt;dl&gt;</b> con dt y dd<span class="task-hint">💡 Ideal para glosarios: término → definición.</span></span></label></li>
+        <li class="task-item"><label><input type="checkbox" value="a2-7"><span class="task-text"><b>Una &lt;abbr&gt;</b> con su title<span class="task-hint">💡 La primera vez que aparece una sigla (CSS, HTML, SEO…), descríbela.</span></span></label></li>
+        <li class="task-item"><label><input type="checkbox" value="a2-8"><span class="task-text"><b>Datos de contacto en &lt;address&gt;</b><span class="task-hint">💡 Piénsalo como la "© y contacto" del footer del blog.</span></span></label></li>
+        <li class="task-item"><label><input type="checkbox" value="a2-9"><span class="task-text"><b>Fecha con &lt;time datetime="…"&gt;</b><span class="task-hint">💡 El texto puede ser bonito ("12 sep 2026"); el datetime, siempre en formato ISO: 2026-09-12.</span></span></label></li>
+        <li class="task-item"><label><input type="checkbox" value="a2-10"><span class="task-text"><b>Validador W3C sin errores</b><span class="task-hint">💡 Las etiquetas nuevas mal cerradas son la causa nº 1 de error aquí.</span></span></label></li>
+      </ul>
+
+      <div class="callout horror">
+        <p class="callout-title">👀 Errores típicos de esta entrega</p>
+        <ul>
+          <li>Usar <code>&lt;blockquote&gt;</code> para "cuadritos bonitos": es solo para citas de verdad.</li>
+          <li><code>&lt;abbr&gt;</code> sin <code>title</code>: entonces no aporta nada.</li>
+          <li><code>&lt;time&gt;</code> sin <code>datetime</code>: pierde toda la gracia (que una máquina lo entienda).</li>
+          <li>Olvidar <code>margin</code>/<code>padding</code>: el enunciado los pide expresamente, no es opcional.</li>
+          <li>Copiar la actividad 1 cambiando dos palabras: el blog tiene otra estructura (entradas, fechas, autores).</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="box-title alt3">🧰 Caja de herramientas</h2>
+      <ul>
+        <li><a href="https://www.domestika.org/es" target="_blank" rel="noopener">Home de Domestika ↗</a> — la fuente del contenido de la actividad 1.</li>
+        <li><a href="https://www.domestika.org/es/blog" target="_blank" rel="noopener">Blog de Domestika ↗</a> — el de la actividad 2.</li>
+        <li><a href="https://validator.w3.org/" target="_blank" rel="noopener">Validador W3C ↗</a> — tu corrector de ortografía, úsalo en cada paso.</li>
+        <li><a href="https://fonts.google.com/" target="_blank" rel="noopener">Google Fonts ↗</a> — la fuente web de la actividad (los 4 pasos están en el <a href="tema-04.html">tema 04</a>).</li>
+        <li><a href="https://www.figma.com/" target="_blank" rel="noopener">Figma ↗</a> — para el prototipo/esbozo antes de codificar.</li>
+      </ul>
+      <div class="callout tip">
+        <p class="callout-title">✔ La frase del profe</p>
+        <p style="margin:0;">"Estáis publicando un libro para pantalla": la legibilidad manda. Textos con tamaño cómodo,
+        espacio entre líneas generoso (recuerda el <code>line-height</code> del <a href="tema-04.html">tema 04</a>) y
+        secciones claras. Que se lea antes de que sea bonito.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p class="big">★ Hecho con estándares web ★</p>
+    <p>Resúmenes escritos con nuestras palabras para repasar en clase.</p>
+    <p>HTML + CSS + un poquito de JS · Sin frameworks, como manda el temario.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

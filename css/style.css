@@ -546,6 +546,87 @@ code {
   white-space: nowrap;
 }
 
+/* ---------- Checklist de actividades ---------- */
+
+.progress {
+  background: var(--white);
+  border: var(--border);
+  border-radius: 999px;
+  box-shadow: var(--shadow-sm);
+  height: 30px;
+  overflow: hidden;
+  margin: 1rem 0 .4rem;
+}
+
+.progress-fill {
+  background: var(--green);
+  border-right: 3px solid var(--ink);
+  height: 100%;
+  width: 0;
+  transition: width .3s ease;
+}
+
+.task-counter {
+  font-size: .85rem;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  margin: .2rem 0 1rem;
+}
+
+.task-list {
+  list-style: none;
+  margin: 0 0 1.2rem;
+  padding: 0;
+}
+
+.task-item {
+  background: var(--white);
+  border: var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  margin: .7rem 0;
+  transition: background .15s ease, transform .12s ease, box-shadow .12s ease;
+}
+
+.task-item:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 5px 5px 0 var(--ink);
+}
+
+.task-item label {
+  display: flex;
+  gap: .8rem;
+  align-items: flex-start;
+  padding: .8rem 1rem;
+  cursor: pointer;
+}
+
+.task-item input[type="checkbox"] {
+  width: 22px;
+  height: 22px;
+  margin-top: .15rem;
+  accent-color: #7ac924;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.task-item.done {
+  background: #F1FFDC;
+}
+
+.task-item.done .task-text > b:first-child {
+  text-decoration: line-through wavy #7ac924 2px;
+}
+
+.task-hint {
+  display: block;
+  font-size: .88rem;
+  font-weight: 400;
+  opacity: .8;
+  margin-top: .25rem;
+}
+
 /* ---------- Responsive ---------- */
 
 @media (max-width: 600px) {
