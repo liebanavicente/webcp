@@ -53,6 +53,25 @@ document.querySelectorAll("[data-tema]").forEach((tarjeta) => {
   }
 });
 
+/* Logo con inclinación 3D al pasar el ratón (todas las páginas) */
+const logo = document.querySelector(".logo");
+const sinMovimiento = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+if (logo && !sinMovimiento) {
+  logo.style.transition = "transform .12s ease, box-shadow .12s ease";
+
+  logo.addEventListener("mousemove", (evento) => {
+    const caja = logo.getBoundingClientRect();
+    const x = (evento.clientX - caja.left) / caja.width - 0.5;
+    const y = (evento.clientY - caja.top) / caja.height - 0.5;
+    logo.style.transform = `rotate(0deg) translate(-2px, -2px) rotateX(${y * -28}deg) rotateY(${x * 28}deg)`;
+  });
+
+  logo.addEventListener("mouseleave", () => {
+    logo.style.transform = "";
+  });
+}
+
 /* Checklists interactivos de la guía de actividades */
 const TAREAS_KEY = "apuntes-web-tareas";
 
