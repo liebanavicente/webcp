@@ -925,6 +925,86 @@ section.examen details.q summary::after {
   box-shadow: var(--shadow-sm);
 }
 
+/* ---------- Transiciones de página (View Transitions API) ---------- */
+
+@view-transition {
+  navigation: auto;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-old(root) {
+    animation: salida-vacilada .45s cubic-bezier(.6, .05, .4, 1) both;
+  }
+
+  ::view-transition-new(root) {
+    animation: entrada-vacilada .55s cubic-bezier(.2, .8, .3, 1.2) both;
+  }
+}
+
+@keyframes salida-vacilada {
+  to {
+    transform: scale(.85) rotate(-4deg);
+    opacity: 0;
+    filter: blur(6px);
+  }
+}
+
+@keyframes entrada-vacilada {
+  from {
+    transform: scale(1.15) rotate(4deg) translateY(30px);
+    opacity: 0;
+    filter: blur(6px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @view-transition {
+    navigation: none;
+  }
+}
+
+/* ---------- Logo con tilt 3D ---------- */
+
+.site-header {
+  perspective: 700px;
+}
+
+.logo {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo { transition: none !important; }
+}
+
+/* ---------- Fondo 3D del hero (WebGL) ---------- */
+
+.hero {
+  overflow: hidden;
+}
+
+.hero-3d {
+  position: absolute;
+  inset: -10% -10%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero-3d canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.hero h1,
+.hero .sub,
+.hero .meta,
+.hero .deco {
+  position: relative;
+  z-index: 1;
+}
+
 /* ---------- Responsive ---------- */
 
 @media (max-width: 600px) {
