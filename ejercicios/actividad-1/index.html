@@ -67,10 +67,50 @@
     #menu ul { margin: 0; padding-left: 20px; }
     #pie a { color: #FFE156; }
     .curso { margin-bottom: 20px; }
+
+    /* Panel de explicación: NO es parte del ejercicio en sí,
+       es la chuleta que explica cómo está resuelto. Por eso
+       lleva un estilo distinto (borde discontinuo) al resto. */
+    .nota-explicacion {
+      max-width: 760px;
+      margin: 20px auto;
+      padding: 20px 24px;
+      background-color: #FFFBEF;
+      border: 3px dashed #141414;
+      border-radius: 12px;
+    }
+    .nota-explicacion h2 {
+      margin-top: 0;
+      font-size: 1.1rem;
+    }
+    .nota-explicacion ul { padding-left: 20px; }
+    .nota-explicacion li { margin-bottom: 10px; }
   </style>
 </head>
 
 <body>
+
+  <section class="nota-explicacion">
+    <h2>🧠 Qué practica este ejercicio y cómo está resuelto</h2>
+    <p>Este ejercicio reconstruye la home de Domestika para practicar la estructura básica
+       de una página HTML. Antes de mirar el código, esto es lo importante:</p>
+    <ul>
+      <li>Cada parte de la página es un <code>&lt;div class="seccion"&gt;</code> independiente,
+        con su propio <code>border</code> y su propio <code>background-color</code> — así se ve
+        de un vistazo cómo se reparte el contenido en cajas.</li>
+      <li>El menú usa <code>&lt;ul&gt;</code> porque el orden de sus enlaces no importa;
+        el ranking de "más vendidos" usa <code>&lt;ol&gt;</code> porque ahí sí importa
+        quién va primero.</li>
+      <li>Solo hay un <code>&lt;h1&gt;</code> en toda la página (el nombre de la marca) y los
+        títulos de categoría bajan a <code>&lt;h3&gt;</code>, respetando la jerarquía de
+        encabezados en vez de saltar de nivel.</li>
+      <li>Las imágenes son SVG dibujados en código para que el ejercicio quepa en un único
+        archivo, pero cada una lleva su <code>alt</code> describiendo lo que se vería, no solo
+        repitiendo el título de al lado.</li>
+      <li>Se usan dos fuentes de dos orígenes distintos: Arial (instalada en el sistema) para
+        el cuerpo del texto y Nunito (Google Fonts) para los títulos.</li>
+    </ul>
+  </section>
 
   <!-- SECCIÓN 1: CABECERA = la "portada de la revista".
        Un solo <h1> en toda la página (regla de oro). -->

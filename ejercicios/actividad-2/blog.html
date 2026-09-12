@@ -66,10 +66,53 @@
       border-radius: 0 10px 10px 0;
     }
     blockquote p { margin: 0; font-style: italic; }
+
+    /* Panel de explicación: NO es parte del ejercicio en sí,
+       es la chuleta que explica cómo está resuelto. Por eso
+       lleva un estilo distinto (borde discontinuo) al resto. */
+    .nota-explicacion {
+      max-width: 760px;
+      margin: 20px auto;
+      padding: 20px 24px;
+      background-color: #FFFBEF;
+      border: 3px dashed #141414;
+      border-radius: 12px;
+    }
+    .nota-explicacion h2 {
+      margin-top: 0;
+      font-size: 1.1rem;
+    }
+    .nota-explicacion ul { padding-left: 20px; }
+    .nota-explicacion li { margin-bottom: 10px; }
   </style>
 </head>
 
 <body>
+
+  <section class="nota-explicacion">
+    <h2>🧠 Qué añade este ejercicio y cómo está resuelto</h2>
+    <p>Este ejercicio reconstruye el blog de Domestika y añade sobre la actividad 1 el
+       formateo de texto avanzado y algo más de layout. Antes de mirar el código, esto es
+       lo importante:</p>
+    <ul>
+      <li>Las secciones ahora sí llevan <code>margin</code> (espacio hasta la caja vecina) y
+        <code>padding</code> (espacio hasta el texto de dentro) de verdad, además del
+        <code>border</code> y el <code>background-color</code> de la actividad 1.</li>
+      <li>Hay dos tipos de cita: <code>&lt;blockquote&gt;</code> para la cita larga que
+        merece su propio bloque, y <code>&lt;q&gt;</code> para la cita corta dentro de un
+        párrafo (el navegador le pone las comillas solo).</li>
+      <li>El glosario usa <code>&lt;dl&gt;</code> + <code>&lt;dt&gt;</code> +
+        <code>&lt;dd&gt;</code> porque es una lista de pares término-definición, no una
+        lista normal — y de paso incluye un <code>&lt;abbr title="…"&gt;</code> para explicar
+        la sigla SEO.</li>
+      <li>Los datos de contacto van dentro de <code>&lt;address&gt;</code>: esa etiqueta no es
+        para cualquier dirección, es específicamente el contacto del autor o del sitio.</li>
+      <li>Cada fecha usa <code>&lt;time datetime="2026-09-12"&gt;</code>: el texto se lee
+        bonito para las personas (12 de septiembre de 2026) pero el atributo
+        <code>datetime</code> guarda el formato ISO para que un buscador o un lector de
+        pantalla lo interprete bien.</li>
+    </ul>
+  </section>
 
   <!-- CABECERA: un solo <h1> (el nombre del blog) -->
   <div class="seccion" id="cabecera">
