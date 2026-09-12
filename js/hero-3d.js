@@ -1,4 +1,4 @@
-/* Fondo 3D del hero de portada — cintas onduladas con WebGL (Three.js) */
+/* Fondo 3D del hero de portada — subrayados ondulados con WebGL (Three.js) */
 
 (() => {
   const contenedor = document.querySelector("[data-hero-3d]");
@@ -26,21 +26,82 @@
   renderer.setSize(ancho, alto);
   contenedor.appendChild(renderer.domElement);
 
-  escena.add(new THREE.HemisphereLight(0xffffff, 0x333344, 1.2));
-  const sol = new THREE.DirectionalLight(0xffffff, 0.7);
-  sol.position.set(3, 5, 6);
-  escena.add(sol);
+  /* Textura de trazo de rotulador: manchurrones de opacidad irregular
+     con los bordes superior/inferior difuminados, como si un
+     subrayador hubiera pasado sin presión uniforme. */
+  const crearTexturaSubrayador = () => {
+    const lienzo = document.createElement("canvas");
+    lienzo.width = 512;
+    lienzo.height = 128;
+    const ctx = lienzo.getContext("2d");
+
+    for (let i = 0; i < 55; i++) {
+      const x = Math.random() * lienzo.width;
+      const y = lienzo.height / 2 + (Math.random() - 0.5) * lienzo.height * 0.75;
+      const radio = 30 + Math.random() * 70;
+      const alfa = 0.35 + Math.random() * 0.65;
+      const gradiente = ctx.createRadialGradient(x, y, 0, x, y, radio);
+      gradiente.addColorStop(0, `rgba(255,255,255,${alfa})`);
+      gradiente.addColorStop(1, "rgba(255,255,255,0)");
+      ctx.fillStyle = gradiente;
+      ctx.beginPath();
+      ctx.ellipse(x, y, radio, radio * (0.5 + Math.random() * 0.5), 0, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    /* Calvas irregulares, como si al rotulador se le acabara la tinta */
+    ctx.globalCompositeOperation = "destination-out";
+    for (let i = 0; i < 16; i++) {
+      const x = Math.random() * lienzo.width;
+      const y = lienzo.height / 2 + (Math.random() - 0.5) * lienzo.height * 0.6;
+      const radio = 18 + Math.random() * 40;
+      const alfa = 0.25 + Math.random() * 0.45;
+      const gradiente = ctx.createRadialGradient(x, y, 0, x, y, radio);
+      gradiente.addColorStop(0, `rgba(255,255,255,${alfa})`);
+      gradiente.addColorStop(1, "rgba(255,255,255,0)");
+      ctx.fillStyle = gradiente;
+      ctx.beginPath();
+      ctx.ellipse(x, y, radio, radio * (0.4 + Math.random() * 0.4), 0, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    ctx.globalCompositeOperation = "destination-in";
+    const vertical = ctx.createLinearGradient(0, 0, 0, lienzo.height);
+    vertical.addColorStop(0, "rgba(255,255,255,0)");
+    vertical.addColorStop(0.2, "rgba(255,255,255,1)");
+    vertical.addColorStop(0.8, "rgba(255,255,255,1)");
+    vertical.addColorStop(1, "rgba(255,255,255,0)");
+    ctx.fillStyle = vertical;
+    ctx.fillRect(0, 0, lienzo.width, lienzo.height);
+    ctx.globalCompositeOperation = "source-over";
+
+    const textura = new THREE.CanvasTexture(lienzo);
+    textura.wrapS = THREE.RepeatWrapping;
+    textura.wrapT = THREE.ClampToEdgeWrapping;
+    textura.repeat.set(6, 1);
+    return textura;
+  };
+
+  const texturaSubrayador = crearTexturaSubrayador();
 
   const paleta = [0xff90e8, 0x9be7ff, 0xffe156, 0xb9ff66, 0xd9b8ff, 0xffc97d, 0xff8a8a];
   const grupo = new THREE.Group();
   const cintas = [];
-  const totalCintas = 9;
+  const totalCintas = 7;
   const segmentos = 64;
   const anchoOnda = 28;
 
   const crearGeometriaCinta = () => {
     const posiciones = new Float32Array((segmentos + 1) * 2 * 3);
+    const uvs = new Float32Array((segmentos + 1) * 2 * 2);
     const indices = [];
+    for (let i = 0; i <= segmentos; i++) {
+      const u = i / segmentos;
+      uvs[i * 4] = u;
+      uvs[i * 4 + 1] = 1;
+      uvs[i * 4 + 2] = u;
+      uvs[i * 4 + 3] = 0;
+    }
     for (let i = 0; i < segmentos; i++) {
       const a = i * 2;
       const b = a + 1;
@@ -50,7 +111,7 @@
     }
     const geometria = new THREE.BufferGeometry();
     geometria.setAttribute("position", new THREE.BufferAttribute(posiciones, 3));
-    geometria.setAttribute("normal", new THREE.BufferAttribute(new Float32Array(posiciones.length), 3));
+    geometria.setAttribute("uv", new THREE.BufferAttribute(uvs, 2));
     geometria.setIndex(indices);
     return geometria;
   };
@@ -58,30 +119,28 @@
   for (let i = 0; i < totalCintas; i++) {
     const geometria = crearGeometriaCinta();
     const color = paleta[i % paleta.length];
-    const material = new THREE.MeshStandardMaterial({
+    const material = new THREE.MeshBasicMaterial({
       color,
-      roughness: 0.4,
-      metalness: 0.08,
-      emissive: color,
-      emissiveIntensity: 0.08,
-      side: THREE.DoubleSide,
+      alphaMap: texturaSubrayador,
       transparent: true,
-      opacity: 0.95,
+      opacity: 0.78,
+      side: THREE.DoubleSide,
+      depthWrite: false,
     });
 
     const malla = new THREE.Mesh(geometria, material);
     malla.frustumCulled = false;
 
     const parametros = {
-      grosor: 0.045 + Math.random() * 0.035,
-      ampY: 0.45 + Math.random() * 0.55,
+      grosor: 0.22 + Math.random() * 0.18,
+      ampY: 0.5 + Math.random() * 0.6,
       freqY: 0.14 + Math.random() * 0.12,
       faseY: Math.random() * Math.PI * 2,
       ampZ: 0.3 + Math.random() * 0.35,
       freqZ: 0.09 + Math.random() * 0.08,
       faseZ: Math.random() * Math.PI * 2,
       velocidad: 0.12 + Math.random() * 0.12,
-      baseY: (i - (totalCintas - 1) / 2) * 0.75 + (Math.random() - 0.5) * 0.3,
+      baseY: (i - (totalCintas - 1) / 2) * 0.95 + (Math.random() - 0.5) * 0.35,
       baseZ: -2.8 + Math.random() * 3.2,
     };
 
@@ -115,7 +174,6 @@
     }
 
     geometria.attributes.position.needsUpdate = true;
-    geometria.computeVertexNormals();
   };
 
   let objetivoX = 0;

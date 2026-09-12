@@ -995,6 +995,7 @@ section.examen details.q summary::after {
   display: block;
   width: 100%;
   height: 100%;
+  mix-blend-mode: multiply;
 }
 
 .hero h1,
